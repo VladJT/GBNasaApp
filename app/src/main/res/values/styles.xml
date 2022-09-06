@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ********** Виджеты *********
+    Атрибуты для изменения внешнего вида виджетов принимают стили ShapeAppearance.MaterialComponents. Также могут быть:
+    ● shapeAppearanceSmallComponent — для мелких виджетов типа кнопок и чипов;
+    ● shapeAppearanceMediumComponent — для средних виджетов типа карточек;
+    ● shapeAppearanceLargeComponent — для крупных виджетов типа Bottom Sheet.-->
+    <style name="MyApp.ShapeAppearance.SmallComponent.Cut" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="MyApp.ShapeAppearance.SmallComponent.FlowStyle" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerFamilyBottomRight">cut</item>
+        <item name="cornerSizeBottomRight">15dp</item>
+    </style>
+
+    <style name="MyApp.ShapeAppearance.SmallComponent.Rounded" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">30dp</item>
+    </style>
+
+    <style name="MyApp.ShapeAppearance.MediumComponent.Cut" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+
+    <style name="MyApp.ShapeAppearance.MediumComponent.Rounded" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+
+    <style name="MyApp.ShapeAppearance.LargeComponent.Cut" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+
+    <style name="MyApp.ShapeAppearance.LargeComponent.Rounded" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+
+    <!-- ********** КНОПКИ *********
+    Все кнопки используют атрибут textAppearanceButton для изменения своего стиля.
+    Основные атрибуты:
+    1. backgroundTint — изменение фона кнопки.
+    2. iconTint — цвет иконки для кнопки (если она есть, и если она в векторе).
+    3. rippleColor — цвет эффекта нажатия.
+    4. strokeColor — цвет обводки кнопки. Цвет по умолчанию colorOnSurface для очерченной
+    кнопки и transparent — для всех остальных.
+    5. strokeWidth — толщина обводки.
+    6. shapeAppearance — форма. По умолчанию shapeAppearanceSmallComponent.
+    -->
+    <style name="MyApp.Button" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">?attr/colorSecondary</item>
+        <item name="rippleColor">@color/gold</item>
+        <item name="strokeWidth">2dp</item>
+    </style>
+
+    <!-- ********** EditText *********
+    Вводим текст в стиле материального дизайна. EditText включает два варианта:
+    Widget.MaterialComponents.TextInputLayout.* и Widget.MaterialComponents.TextInputEditText.*.
+    Суффиксы: обычный *.FilledBox (по умолчанию) и очерченный *.OutlinedBox.
+    Основные атрибуты:
+    1. boxBackgroundMode — тип фона. Обычный, очерченный и никакого: filled, outline or none.
+    2. boxBackgroundColor — цвет фона. По умолчанию == colorOnSurface.
+    3. boxStrokeColor — цвет обводки. По умолчанию == colorOnSurface.
+    4. hintTextColor/errorTextColor/counterTextColor — цвет подсказки, ошибки, счётчика.
+    5. shapeAppearance — форма
+    -->
+    <style name="MyApp.TextField" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxStrokeColor">@android:color/holo_orange_light</item>
+    </style>
+
+    <!-- ********** Карточки *********
+    Карточки в Material Design считаются «поверхностями» (surface) и наследуются от Widget.MaterialComponents.CardView.
+    Основные атрибуты:
+    1. cardBackgroundColor — цвет фона. По умолчанию colorSurface.
+    2. cardElevation — тень. По умолчанию 1dp.
+    3. shapeAppearance — форма. По умолчанию shapeAppearanceMediumComponent.
+    -->
+    <style name="MyApp.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">20dp</item>
+    </style>
+
+    <!-- ********** BottomNavigationView *********
+    Нижняя навигация состоит из двух основных элементов, наследующих
+    Widget.MaterialComponents.BottomNavigationView с дополнительными суффиксами: surface (по
+    умолчанию нет суффикса) и colored (*.Colored). Текстовые заголовки можно менять через атрибут
+    textAppearanceCaption, который принимает стили типографии.
+    Основные атрибуты:
+    1. backgroundTint — цвет фона. Цвет по умолчанию: colorSurface и colorPrimary для colored;
+    2. itemTextColor/itemIconTint — цвет иконок и заголовков. Цвета по умолчанию:
+    colorOnSurface/colorPrimary (при выбранном);
+    3. itemHorizontalTranslationEnabled — флаг, решающий, будет ли анимация при
+    перелистывании. По умолчанию == false.
+    -->
+
+    <style name="MyApp.BottomSheetLine" parent="Base.CardView">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:background">#663b4351</item>
+    </style>
+
+    <style name="MyApp.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="shapeAppearance">
+            @style/MyApp.ShapeAppearance.SmallComponent.FlowStyle
+        </item>
+    </style>
+</resources>

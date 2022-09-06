@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="choose_notes_theme">
+        <item>Astro (default_theme)</item>
+        <item>Mars (Cut_style)</item>
+        <item>Mercury (Rounded_style)</item>
+    </string-array>
+</resources>

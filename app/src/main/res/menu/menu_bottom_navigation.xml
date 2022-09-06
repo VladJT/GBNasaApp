@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/bottom_navigation_one"
+            android:icon="@drawable/ic_baseline_invert_colors_24"
+            android:title="@string/choose_theme" />
+        <item
+            android:id="@+id/bottom_navigation_two"
+            android:icon="@drawable/ic_load_error_vector"
+            android:title="На экран 2" />
+    </group>
+
+</menu>

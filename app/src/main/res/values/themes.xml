@@ -1,0 +1,66 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.GBNasaApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="textColorConnected">@color/colorAccent</item>
+        <item name="textColorDisconnected">@color/gray</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="textColorConnected">@color/purple_200</item>
+        <item name="textColorDisconnected">@color/gray</item>
+        <item name="shapeAppearanceSmallComponent">?smallComponentShape</item>
+        <item name="shapeAppearanceMediumComponent">?mediumComponentShape</item>
+        <item name="shapeAppearanceLargeComponent">?largeComponentShape</item>
+        <item name="materialButtonStyle">@style/MyApp.Button</item>
+        <item name="materialCardViewStyle">@style/MyApp.Card</item>
+        <item name="android:forceDarkAllowed">true</item>
+    </style>
+
+    <!-- MarsStyle (Cut) -->
+    <style name="AppTheme.Mars">
+        <item name="colorPrimary">@color/mars.primaryColor</item>
+        <item name="android:colorPrimary">@color/mars.primaryColor</item>
+        <item name="colorPrimaryDark">@color/mars.primaryDarkColor</item>
+        <item name="android:colorPrimaryDark">@color/mars.primaryDarkColor</item>
+        <item name="colorPrimaryVariant">@color/mars.primaryLightColor</item>
+        <item name="colorSecondary">@color/mars.secondaryColor</item>
+        <item name="android:colorSecondary">@color/mars.secondaryColor</item>
+        <item name="colorSecondaryVariant">@color/mars.secondaryLightColor</item>
+        <item name="colorOnPrimary">@color/mars.primaryTextColor</item>
+        <item name="colorOnSecondary">@color/mars.secondaryColor</item>
+        <item name="smallComponentShape">@style/MyApp.ShapeAppearance.SmallComponent.Cut</item>
+        <item name="mediumComponentShape">@style/MyApp.ShapeAppearance.MediumComponent.Cut</item>
+        <item name="largeComponentShape">@style/MyApp.ShapeAppearance.LargeComponent.Cut</item>
+        <item name="fontFamily">@font/beer</item>
+        <item name="android:fontFamily">@font/beer</item>
+    </style>
+
+
+    <!-- Mercury (Rounded_style) -->
+    <style name="AppTheme.Neptune">
+        <item name="colorPrimary">@color/neptune.primaryColor</item>
+        <item name="android:colorPrimary">@color/neptune.primaryColor</item>
+        <item name="colorPrimaryDark">@color/neptune.primaryDarkColor</item>
+        <item name="android:colorPrimaryDark">@color/neptune.primaryDarkColor</item>
+        <item name="colorPrimaryVariant">@color/neptune.primaryLightColor</item>
+        <item name="colorSecondary">@color/neptune.secondaryColor</item>
+        <item name="android:colorSecondary">@color/neptune.secondaryColor</item>
+        <item name="colorSecondaryVariant">@color/neptune.secondaryLightColor</item>
+        <item name="colorOnPrimary">@color/neptune.primaryTextColor</item>
+        <item name="colorOnSecondary">@color/neptune.secondaryColor</item>
+        <item name="smallComponentShape">@style/MyApp.ShapeAppearance.SmallComponent.Rounded</item>
+        <item name="mediumComponentShape">@style/MyApp.ShapeAppearance.MediumComponent.Rounded</item>
+        <item name="largeComponentShape">@style/MyApp.ShapeAppearance.LargeComponent.Rounded</item>beer.ttf
+    </style>
+</resources>
