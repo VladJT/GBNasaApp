@@ -5,11 +5,14 @@ import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomappbar.BottomAppBar
 import jt.projects.gbnasaapp.databinding.ActivityMainBinding
 import jt.projects.gbnasaapp.model.SharedPref
 import jt.projects.gbnasaapp.ui.common.BottomNavigationDrawerFragment
+import jt.projects.gbnasaapp.ui.common.SettingsFragment
 import jt.projects.gbnasaapp.ui.pod.PodViewPagerFragment
+import jt.projects.gbnasaapp.utils.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -70,18 +73,37 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                BottomNavigationDrawerFragment().show(supportFragmentManager, "tag")
+                BottomNavigationDrawerFragment().show(supportFragmentManager, BOTTOM_NAV_FRAGMENT_TAG)
             }
             R.id.menu_action_pod -> {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, PodViewPagerFragment.newInstance())
-                    .commitNow()
+                showFragment(PodViewPagerFragment.newInstance())
+            }
+            R.id.menu_action_settings -> {
+                showFragmentWithBS(SettingsFragment.newInstance(), SETTINGS_FRAGMENT_TAG)
             }
             R.id.menu_action_themes -> {
                 showThemeDialog()
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    fun showFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(binding.fragmentContainer.id, fragment)
+            .commit()
+    }
+
+    fun showFragmentWithBS(fragment: Fragment, fragmentTag: String) {
+        val f = supportFragmentManager.findFragmentByTag(fragmentTag)
+        if (f==null) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(binding.fragmentContainer.id, fragment, fragmentTag)
+                .addToBackStack("")
+                .commit()
+        }
     }
 
     fun showThemeDialog() {

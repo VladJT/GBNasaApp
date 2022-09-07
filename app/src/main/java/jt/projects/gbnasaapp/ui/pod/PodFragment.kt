@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import jt.projects.gbnasaapp.R
 import jt.projects.gbnasaapp.databinding.PictureOfTheDayFragmentBinding
+import jt.projects.gbnasaapp.model.SharedPref
 import jt.projects.gbnasaapp.utils.toast
 import jt.projects.gbnasaapp.viewmodel.PictureOfTheDayData
 import jt.projects.gbnasaapp.viewmodel.PictureOfTheDayViewModel
@@ -53,7 +54,10 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
             is PictureOfTheDayData.Success -> {
                 binding.podProgressBar.visibility = View.GONE
                 val serverResponseData = data.serverResponseData
-                val url: String? = serverResponseData.url
+                var url: String? = serverResponseData.url
+                if (SharedPref.getData().podHD) {
+                    url = serverResponseData.hdurl
+                }
                 if (url.isNullOrEmpty()) {
                     toast("Link is empty")
                 } else {

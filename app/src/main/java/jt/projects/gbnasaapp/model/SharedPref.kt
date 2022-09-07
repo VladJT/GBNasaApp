@@ -39,6 +39,7 @@ class SharedPref {
 
     // класс хранения настроек в формате JSON
     data class Settings(
-        var theme: Int = R.style.Theme_GBNasaApp //default
+        var theme: Int = R.style.Theme_GBNasaApp, //default
+        var podHD: Boolean = false
     )
 }

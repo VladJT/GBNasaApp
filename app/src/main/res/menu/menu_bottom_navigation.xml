@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="none">
         <item
-            android:id="@+id/bottom_navigation_one"
+            android:id="@+id/bottom_navigation_theme"
             android:icon="@drawable/ic_baseline_invert_colors_24"
             android:title="@string/choose_theme" />
         <item
-            android:id="@+id/bottom_navigation_two"
-            android:icon="@drawable/ic_load_error_vector"
-            android:title="На экран 2" />
+            android:id="@+id/bottom_navigation_settings"
+            android:icon="@drawable/ic_baseline_settings_24"
+            android:title="@string/settings" />
     </group>
 
 </menu>
