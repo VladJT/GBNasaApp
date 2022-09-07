@@ -15,17 +15,17 @@
             android:id="@+id/image_view_pod"
             android:layout_width="match_parent"
             android:layout_height="600dp"
-            android:scaleType="centerCrop"
             android:contentDescription="photo_of_the_day_stub"
+            android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_no_photo_vector" />
 
         <WebView
-            android:visibility="gone"
             android:id="@+id/webview"
             android:layout_width="match_parent"
             android:layout_height="400dp"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,10 +54,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pod_header" />
 
-
-        <include
-            layout="@layout/loading_layout"
-            app:layout_constraintTop_toBottomOf="@+id/bottomSheetDescription" />
+        <ProgressBar
+            android:id="@+id/pod_progress_bar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="@dimen/progress_bar_diameter_small"
+            android:layout_height="@dimen/progress_bar_diameter_small"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="@+id/image_view_pod"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/image_view_pod" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

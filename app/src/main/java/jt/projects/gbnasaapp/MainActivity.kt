@@ -1,12 +1,11 @@
 package jt.projects.gbnasaapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.material.bottomappbar.BottomAppBar
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import jt.projects.gbnasaapp.databinding.ActivityMainBinding
 import jt.projects.gbnasaapp.model.SharedPref
 import jt.projects.gbnasaapp.ui.common.BottomNavigationDrawerFragment

@@ -3,9 +3,9 @@ package jt.projects.gbnasaapp.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import jt.projects.gbnasaapp.model.pod.PODRetrofitImpl
 import jt.projects.gbnasaapp.BuildConfig
 import jt.projects.gbnasaapp.model.dto.PODServerResponseData
+import jt.projects.gbnasaapp.model.pod.PODRetrofitImpl
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

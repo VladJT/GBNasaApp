@@ -4,7 +4,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import jt.projects.gbnasaapp.ui.pod.PodFragment
-import jt.projects.gbnasaapp.utils.*
+import jt.projects.gbnasaapp.utils.DBYESTERDAY_FRAGMENT
+import jt.projects.gbnasaapp.utils.TODAY_FRAGMENT
+import jt.projects.gbnasaapp.utils.YESTERDAY_FRAGMENT
 import java.time.LocalDate
 
 
@@ -13,7 +15,11 @@ import java.time.LocalDate
 class PodViewPagerAdapter(fragmentActivity: FragmentActivity) :
     FragmentStateAdapter(fragmentActivity) {
 
-    private val fragments = arrayOf(PodFragment(LocalDate.now()), PodFragment(LocalDate.now().minusDays(1)), PodFragment(LocalDate.now().minusDays(2)))
+    private val fragments = arrayOf(
+        PodFragment(LocalDate.now()),
+        PodFragment(LocalDate.now().minusDays(1)),
+        PodFragment(LocalDate.now().minusDays(2))
+    )
 
     override fun getItemCount(): Int {
         return fragments.size

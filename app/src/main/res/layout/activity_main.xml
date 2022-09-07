@@ -27,9 +27,9 @@
         app:fabAlignmentMode="center"
         app:fabAnimationMode="scale"
         app:fabCradleRoundedCornerRadius="10dp"
-        app:hideOnScroll="true"
-        app:menu="@menu/menu_bottom_bar"
+        app:hideOnScroll="false"
         app:layout_scrollFlags="scroll|enterAlways"
+        app:menu="@menu/menu_bottom_bar"
         app:navigationIcon="@drawable/ic_hamburger_menu" />
 
     <!-- Обязательно в CoordinatorLayout -->

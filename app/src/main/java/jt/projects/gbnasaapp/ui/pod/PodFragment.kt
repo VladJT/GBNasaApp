@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebViewClient
-import android.widget.FrameLayout
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
@@ -50,11 +48,10 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
     }
 
     private fun renderData(data: PictureOfTheDayData) {
-        val loadingLayout = requireActivity().findViewById<FrameLayout>(R.id.loading_layout)
-        loadingLayout.visibility = View.GONE
+
         when (data) {
             is PictureOfTheDayData.Success -> {
-            //    loadingLayout.visibility = View.GONE
+                binding.podProgressBar.visibility = View.GONE
                 val serverResponseData = data.serverResponseData
                 val url: String? = serverResponseData.url
                 if (url.isNullOrEmpty()) {
@@ -92,10 +89,10 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
                 }
             }
             is PictureOfTheDayData.Loading -> {
-            //    loadingLayout.visibility = View.VISIBLE
+                binding.podProgressBar.visibility = View.VISIBLE
             }
             is PictureOfTheDayData.Error -> {
-            //    loadingLayout.visibility = View.GONE
+                binding.podProgressBar.visibility = View.GONE
                 toast(data.error.message)
             }
         }
