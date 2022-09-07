@@ -8,9 +8,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import jt.projects.gbnasaapp.MainActivity
 import jt.projects.gbnasaapp.R
 import jt.projects.gbnasaapp.databinding.BottomNavigationLayoutBinding
-import jt.projects.gbnasaapp.ui.pod.PodViewPagerFragment
 import jt.projects.gbnasaapp.utils.SETTINGS_FRAGMENT_TAG
-import jt.projects.gbnasaapp.utils.toast
 
 
 class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
@@ -30,9 +28,12 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
-            when(menuItem.itemId){
+            when (menuItem.itemId) {
                 R.id.bottom_navigation_theme -> (requireActivity() as MainActivity).showThemeDialog()
-                R.id.bottom_navigation_settings -> (requireActivity() as MainActivity).showFragmentWithBS(SettingsFragment.newInstance(), SETTINGS_FRAGMENT_TAG)
+                R.id.bottom_navigation_settings -> (requireActivity() as MainActivity).showFragmentWithBS(
+                    SettingsFragment.newInstance(),
+                    SETTINGS_FRAGMENT_TAG
+                )
             }
             true
         }

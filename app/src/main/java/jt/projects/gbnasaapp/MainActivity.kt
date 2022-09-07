@@ -11,8 +11,10 @@ import jt.projects.gbnasaapp.databinding.ActivityMainBinding
 import jt.projects.gbnasaapp.model.SharedPref
 import jt.projects.gbnasaapp.ui.common.BottomNavigationDrawerFragment
 import jt.projects.gbnasaapp.ui.common.SettingsFragment
+import jt.projects.gbnasaapp.ui.mars.MarsFragment
 import jt.projects.gbnasaapp.ui.pod.PodViewPagerFragment
-import jt.projects.gbnasaapp.utils.*
+import jt.projects.gbnasaapp.utils.BOTTOM_NAV_FRAGMENT_TAG
+import jt.projects.gbnasaapp.utils.SETTINGS_FRAGMENT_TAG
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         SharedPref.initSharedPreferencesContext(applicationContext)
         setTheme(SharedPref.getData().theme)
         binding = ActivityMainBinding.inflate(layoutInflater)
-
         setSupportActionBar(binding.bottomAppBar)
         initFabListener()
 
@@ -34,7 +35,17 @@ class MainActivity : AppCompatActivity() {
                 .replace(R.id.fragment_container, PodViewPagerFragment.newInstance())
                 .commitNow()
         }
+
+        // TODO костыль для решения вопроса отрисовки иконок меню при старте приложения
+        // пока не понятна ошибка почему при старте - они не отрисовываются, но надо переделать
+        Thread{
+            Thread.sleep(1000)
+            runOnUiThread(){binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)}
+        }.start()
     }
+
+
+
 
     private fun initFabListener() {
         binding.fab.setOnClickListener {
@@ -73,10 +84,16 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                BottomNavigationDrawerFragment().show(supportFragmentManager, BOTTOM_NAV_FRAGMENT_TAG)
+                BottomNavigationDrawerFragment().show(
+                    supportFragmentManager,
+                    BOTTOM_NAV_FRAGMENT_TAG
+                )
             }
             R.id.menu_action_pod -> {
                 showFragment(PodViewPagerFragment.newInstance())
+            }
+            R.id.menu_action_mars -> {
+                showFragment(MarsFragment.newInstance())
             }
             R.id.menu_action_settings -> {
                 showFragmentWithBS(SettingsFragment.newInstance(), SETTINGS_FRAGMENT_TAG)
@@ -97,7 +114,7 @@ class MainActivity : AppCompatActivity() {
 
     fun showFragmentWithBS(fragment: Fragment, fragmentTag: String) {
         val f = supportFragmentManager.findFragmentByTag(fragmentTag)
-        if (f==null) {
+        if (f == null) {
             supportFragmentManager
                 .beginTransaction()
                 .replace(binding.fragmentContainer.id, fragment, fragmentTag)

@@ -4,8 +4,14 @@
 
     <item
         android:id="@+id/menu_action_pod"
-        android:icon="@drawable/ic_baseline_image_24"
+        android:icon="@drawable/pod"
         android:title="Фото дня"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menu_action_mars"
+        android:icon="@drawable/mars"
+        android:title="Фото марса"
+        app:showAsAction="always" />
 
 </menu>

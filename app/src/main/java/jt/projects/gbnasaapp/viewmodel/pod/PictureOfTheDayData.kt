@@ -1,6 +1,6 @@
-package jt.projects.gbnasaapp.viewmodel
+package jt.projects.gbnasaapp.viewmodel.pod
 
-import jt.projects.gbnasaapp.model.dto.PODServerResponseData
+import jt.projects.gbnasaapp.model.pod.PODServerResponseData
 
 
 sealed class PictureOfTheDayData {

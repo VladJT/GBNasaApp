@@ -14,8 +14,8 @@ import jt.projects.gbnasaapp.R
 import jt.projects.gbnasaapp.databinding.PictureOfTheDayFragmentBinding
 import jt.projects.gbnasaapp.model.SharedPref
 import jt.projects.gbnasaapp.utils.toast
-import jt.projects.gbnasaapp.viewmodel.PictureOfTheDayData
-import jt.projects.gbnasaapp.viewmodel.PictureOfTheDayViewModel
+import jt.projects.gbnasaapp.viewmodel.pod.PictureOfTheDayData
+import jt.projects.gbnasaapp.viewmodel.pod.PictureOfTheDayViewModel
 import java.time.LocalDate
 
 

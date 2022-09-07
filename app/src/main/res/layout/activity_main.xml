@@ -30,7 +30,8 @@
         app:hideOnScroll="false"
         app:layout_scrollFlags="scroll|enterAlways"
         app:menu="@menu/menu_bottom_bar"
-        app:navigationIcon="@drawable/ic_hamburger_menu" />
+        app:navigationIcon="@drawable/ic_hamburger_menu"
+        />
 
     <!-- Обязательно в CoordinatorLayout -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton

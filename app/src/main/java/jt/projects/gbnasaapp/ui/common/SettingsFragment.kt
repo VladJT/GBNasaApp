@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.google.android.material.chip.Chip
 import jt.projects.gbnasaapp.databinding.FragmentSettingsBinding
 import jt.projects.gbnasaapp.model.SharedPref
 
@@ -34,7 +33,7 @@ class SettingsFragment : Fragment() {
         initSaveButton()
     }
 
-    private fun initSaveButton(){
+    private fun initSaveButton() {
         binding.buttonSaveSettings.setOnClickListener {
             SharedPref.settings.podHD = binding.switchPodHd.isChecked
             SharedPref.save()

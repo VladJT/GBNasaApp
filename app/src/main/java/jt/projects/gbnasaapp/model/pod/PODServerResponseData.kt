@@ -1,4 +1,4 @@
-package jt.projects.gbnasaapp.model.dto
+package jt.projects.gbnasaapp.model.pod
 
 import com.google.gson.annotations.SerializedName
 

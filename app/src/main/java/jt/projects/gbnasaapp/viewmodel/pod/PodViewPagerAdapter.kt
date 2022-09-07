@@ -1,4 +1,4 @@
-package jt.projects.gbnasaapp.viewmodel
+package jt.projects.gbnasaapp.viewmodel.pod
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

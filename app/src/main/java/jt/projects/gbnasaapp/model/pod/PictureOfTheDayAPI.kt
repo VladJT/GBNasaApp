@@ -1,6 +1,5 @@
 package jt.projects.gbnasaapp.model.pod
 
-import jt.projects.gbnasaapp.model.dto.PODServerResponseData
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

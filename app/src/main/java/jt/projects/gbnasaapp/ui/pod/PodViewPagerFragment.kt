@@ -10,7 +10,7 @@ import jt.projects.gbnasaapp.databinding.PictureOfTheDayMainBinding
 import jt.projects.gbnasaapp.utils.DBYESTERDAY_FRAGMENT
 import jt.projects.gbnasaapp.utils.TODAY_FRAGMENT
 import jt.projects.gbnasaapp.utils.YESTERDAY_FRAGMENT
-import jt.projects.gbnasaapp.viewmodel.PodViewPagerAdapter
+import jt.projects.gbnasaapp.viewmodel.pod.PodViewPagerAdapter
 
 class PodViewPagerFragment : Fragment() {
     private var _binding: PictureOfTheDayMainBinding? = null
