@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Projects/Android/GBNasaApp/app/src/main/res/drawable-v24/separator.xml" value="0.2455" />
         <entry key="..\:/Projects/Android/GBNasaApp/app/src/main/res/drawable/ic_back_fab.xml" value="0.1295" />
         <entry key="..\:/Projects/Android/GBNasaApp/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1295" />
         <entry key="..\:/Projects/Android/GBNasaApp/app/src/main/res/drawable/ic_hamburger_menu.xml" value="0.322" />
@@ -18,6 +19,7 @@
         <entry key="..\:/Projects/Android/GBNasaApp/app/src/main/res/layout/fragment_settings.xml" value="0.4" />
         <entry key="..\:/Projects/Android/GBNasaApp/app/src/main/res/layout/loading_layout.xml" value="0.39895833333333336" />
         <entry key="..\:/Projects/Android/GBNasaApp/app/src/main/res/layout/mars_fragment.xml" value="0.39895833333333336" />
+        <entry key="..\:/Projects/Android/GBNasaApp/app/src/main/res/layout/mars_photo_card.xml" value="0.39895833333333336" />
         <entry key="..\:/Projects/Android/GBNasaApp/app/src/main/res/layout/picture_of_the_day_fragment.xml" value="0.4" />
         <entry key="..\:/Projects/Android/GBNasaApp/app/src/main/res/layout/picture_of_the_day_main.xml" value="0.3453703703703704" />
         <entry key="..\:/Projects/Android/GBNasaApp/app/src/main/res/layout/vp_picture_of_the_day.xml" value="0.35648148148148145" />

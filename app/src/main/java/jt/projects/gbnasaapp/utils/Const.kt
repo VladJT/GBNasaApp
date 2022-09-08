@@ -19,3 +19,6 @@ const val DBYESTERDAY_FRAGMENT = 2
 // fragment tags
 const val SETTINGS_FRAGMENT_TAG = "settings"
 const val BOTTOM_NAV_FRAGMENT_TAG = "bottom_nav_drawer"
+
+// анимации VIEW
+const val DURATION_ITEM_ANIMATOR: Long = 300

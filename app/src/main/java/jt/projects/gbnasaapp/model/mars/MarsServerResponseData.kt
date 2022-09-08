@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 
 data class MarsServerResponseData(
     @SerializedName("photos")
-    val photos: List<Photo>
+    val photos: List<MarsPhoto>
 )

@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         // TODO костыль для решения вопроса отрисовки иконок меню при старте приложения
         // пока не понятна ошибка почему при старте - они не отрисовываются, но надо переделать
         Thread{
-            Thread.sleep(1000)
+            Thread.sleep(2000)
             runOnUiThread(){binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)}
         }.start()
     }

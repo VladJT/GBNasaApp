@@ -31,8 +31,9 @@ class MarsViewModel(
             response: Response<MarsServerResponseData>
         ) {
             if (response.isSuccessful && response.body() != null) {
-                liveDataForViewToObserve.value =
-                    MarsData.Success(response.body()!!)
+//                liveDataForViewToObserve.value =
+//                    MarsData.Success(response.body()!!)
+                liveDataForViewToObserve.postValue(MarsData.Success(response.body()!!))
             } else {
                 val message = response.message()
                 if (message.isNullOrEmpty()) {

@@ -3,7 +3,7 @@ package jt.projects.gbnasaapp.model.mars
 
 import com.google.gson.annotations.SerializedName
 
-data class Photo(
+data class MarsPhoto(
     @SerializedName("camera")
     val camera: Camera,
     @SerializedName("earth_date")
