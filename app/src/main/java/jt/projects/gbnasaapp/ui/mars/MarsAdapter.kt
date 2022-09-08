@@ -1,4 +1,4 @@
-package jt.projects.gbnasaapp.viewmodel.mars
+package jt.projects.gbnasaapp.ui.mars
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

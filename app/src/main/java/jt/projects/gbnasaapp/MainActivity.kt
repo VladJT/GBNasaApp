@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import jt.projects.gbnasaapp.databinding.ActivityMainBinding
 import jt.projects.gbnasaapp.model.SharedPref
 import jt.projects.gbnasaapp.ui.common.BottomNavigationDrawerFragment
@@ -43,8 +44,6 @@ class MainActivity : AppCompatActivity() {
             runOnUiThread(){binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)}
         }.start()
     }
-
-
 
 
     private fun initFabListener() {
@@ -126,7 +125,7 @@ class MainActivity : AppCompatActivity() {
     fun showThemeDialog() {
         val items = resources.getStringArray(R.array.choose_notes_theme)
         // Создаём билдер и передаём контекст приложения
-        AlertDialog.Builder(this@MainActivity)
+        MaterialAlertDialogBuilder(this@MainActivity)
             .setTitle("Выбор темы")
             .setItems(items) { _, which ->
                 var newTheme = 0
@@ -144,4 +143,5 @@ class MainActivity : AppCompatActivity() {
             .setNegativeButton("Отмена", null)
             .create().show()
     }
+
 }

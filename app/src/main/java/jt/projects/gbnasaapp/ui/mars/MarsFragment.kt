@@ -1,5 +1,7 @@
 package jt.projects.gbnasaapp.ui.mars
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,14 +11,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import jt.projects.gbnasaapp.R
 import jt.projects.gbnasaapp.databinding.MarsFragmentBinding
 import jt.projects.gbnasaapp.model.mars.MarsPhoto
 import jt.projects.gbnasaapp.utils.DURATION_ITEM_ANIMATOR
 import jt.projects.gbnasaapp.utils.OnItemViewClickListener
 import jt.projects.gbnasaapp.utils.snackBar
-import jt.projects.gbnasaapp.viewmodel.mars.MarsAdapter
 import jt.projects.gbnasaapp.viewmodel.mars.MarsData
 import jt.projects.gbnasaapp.viewmodel.mars.MarsViewModel
 import java.time.LocalDate
@@ -29,6 +29,11 @@ class MarsFragment : Fragment() {
     private val adapter = MarsAdapter(object : OnItemViewClickListener{
         override fun onImageClick(data: MarsPhoto) {
             snackBar("${data.id}")
+            Intent().apply {
+                action = Intent.ACTION_VIEW
+                setDataAndType(Uri.parse(data.imgSrc), "image/*")
+                requireActivity().startActivity(this)
+            }
         }
     })
 
