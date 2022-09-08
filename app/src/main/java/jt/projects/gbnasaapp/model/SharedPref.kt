@@ -40,6 +40,7 @@ class SharedPref {
     // класс хранения настроек в формате JSON
     data class Settings(
         var theme: Int = R.style.Theme_GBNasaApp, //default
-        var podHD: Boolean = false
+        var podHD: Boolean = false,
+        var marsPhotoDaysBefore: Int = 7 // за сколько дней до текущей даты показывать фото марса
     )
 }

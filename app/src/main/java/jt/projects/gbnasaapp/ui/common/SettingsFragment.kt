@@ -31,11 +31,13 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initPodHdSwitch()
         initSaveButton()
+        initMarsDaysBeforeSlider()
     }
 
     private fun initSaveButton() {
         binding.buttonSaveSettings.setOnClickListener {
             SharedPref.settings.podHD = binding.switchPodHd.isChecked
+            SharedPref.settings.marsPhotoDaysBefore = binding.sliderMarsPhotoDaysBefore.value.toInt()
             SharedPref.save()
             requireActivity().supportFragmentManager.popBackStack()
         }
@@ -44,6 +46,11 @@ class SettingsFragment : Fragment() {
     private fun initPodHdSwitch() {
         binding.switchPodHd.isChecked = SharedPref.settings.podHD
     }
+
+    private fun initMarsDaysBeforeSlider() {
+        binding.sliderMarsPhotoDaysBefore.value = SharedPref.settings.marsPhotoDaysBefore.toFloat()
+    }
+
 
     override fun onDestroyView() {
         _binding = null

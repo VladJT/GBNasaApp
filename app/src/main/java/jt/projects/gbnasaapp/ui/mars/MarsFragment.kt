@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import jt.projects.gbnasaapp.R
 import jt.projects.gbnasaapp.databinding.MarsFragmentBinding
+import jt.projects.gbnasaapp.model.SharedPref
 import jt.projects.gbnasaapp.model.mars.MarsPhoto
 import jt.projects.gbnasaapp.utils.DURATION_ITEM_ANIMATOR
 import jt.projects.gbnasaapp.utils.OnItemViewClickListener
@@ -57,7 +58,7 @@ class MarsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         viewModel.getDate().observe(viewLifecycleOwner) { renderData(it) }
-        val localDate: LocalDate = LocalDate.now().minusDays(7)
+        val localDate: LocalDate = LocalDate.now().minusDays(SharedPref.settings.marsPhotoDaysBefore.toLong())
         viewModel.loadMarsByDate(localDate)
     }
 

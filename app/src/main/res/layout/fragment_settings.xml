@@ -7,37 +7,90 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/margin_std_small"
         android:background="?android:windowBackground"
-        android:orientation="vertical">
+        android:divider="@drawable/separator"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:showDividers="middle">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <!--POD SETTINGS-->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/settigs_pod"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:paddingBottom="16dp">
+            android:layout_marginTop="@dimen/margin_std_big">
 
-            <com.google.android.material.switchmaterial.SwitchMaterial
-                android:id="@+id/switch_pod_hd"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_std_medium"
-                android:text="Показывать фотографию дня в HD"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:clipToPadding="false">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_save_settings"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/settigs_pod_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Настройки для фотографии дня"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switch_pod_hd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Показывать фотографию дня в HD"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/settigs_pod_label" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--MARS SETTINGS-->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/settigs_mars"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_std_big">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_std_medium"
-                android:text="Сохранить"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switch_pod_hd" />
+                android:clipToPadding="false">
 
+                <TextView
+                    android:id="@+id/settigs_mars_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Настройки для фотографий марса (дней до фото)"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/slider_mars_photo_days_before"
+                    style="@style/MyApp.Slider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:stepSize="1"
+                    android:valueFrom="3"
+                    android:valueTo="30"
+                    app:labelBehavior="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/settigs_mars_label" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_save_settings"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_std_big"
+            android:text="@string/save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/slider_mars_photo_days_before" />
+
     </LinearLayout>
 </ScrollView>

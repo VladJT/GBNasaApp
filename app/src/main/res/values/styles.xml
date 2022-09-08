@@ -7,14 +7,7 @@
     ● shapeAppearanceLargeComponent — для крупных виджетов типа Bottom Sheet.-->
     <style name="MyApp.ShapeAppearance.SmallComponent.Cut" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerFamily">cut</item>
-        <item name="cornerSize">8dp</item>
-    </style>
-
-    <style name="MyApp.ShapeAppearance.SmallComponent.FlowStyle" parent="ShapeAppearance.MaterialComponents.SmallComponent">
-        <item name="cornerFamilyTopLeft">rounded</item>
-        <item name="cornerSizeTopLeft">20dp</item>
-        <item name="cornerFamilyBottomRight">cut</item>
-        <item name="cornerSizeBottomRight">15dp</item>
+        <item name="cornerSize">4dp</item>
     </style>
 
     <style name="MyApp.ShapeAppearance.SmallComponent.Rounded" parent="ShapeAppearance.MaterialComponents.SmallComponent">
@@ -24,7 +17,7 @@
 
     <style name="MyApp.ShapeAppearance.MediumComponent.Cut" parent="ShapeAppearance.MaterialComponents.MediumComponent">
         <item name="cornerFamily">cut</item>
-        <item name="cornerSize">20dp</item>
+        <item name="cornerSize">10dp</item>
     </style>
 
     <style name="MyApp.ShapeAppearance.MediumComponent.Rounded" parent="ShapeAppearance.MaterialComponents.MediumComponent">
@@ -34,7 +27,7 @@
 
     <style name="MyApp.ShapeAppearance.LargeComponent.Cut" parent="ShapeAppearance.MaterialComponents.LargeComponent">
         <item name="cornerFamily">cut</item>
-        <item name="cornerSize">20dp</item>
+        <item name="cornerSize">10dp</item>
     </style>
 
     <style name="MyApp.ShapeAppearance.LargeComponent.Rounded" parent="ShapeAppearance.MaterialComponents.LargeComponent">
@@ -82,7 +75,8 @@
     3. shapeAppearance — форма. По умолчанию shapeAppearanceMediumComponent.
     -->
     <style name="MyApp.Card" parent="Widget.MaterialComponents.CardView">
-        <item name="cardElevation">20dp</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
     </style>
 
     <!-- ********** BottomNavigationView *********
@@ -105,9 +99,20 @@
         <item name="android:background">#663b4351</item>
     </style>
 
-    <style name="MyApp.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="shapeAppearance">
-            @style/MyApp.ShapeAppearance.SmallComponent.FlowStyle
-        </item>
+
+    <style name="MyApp.Slider" parent="@style/Widget.MaterialComponents.Slider">
+        <item name="labelStyle">@style/MyApp.SliderLabel</item>
+        <item name="materialThemeOverlay">@style/MyApp.ThemeOverlay.Slider</item>
+    </style>
+
+    <style name="MyApp.SliderLabel" parent="Widget.MaterialComponents.Tooltip">
+        <item name="fontFamily">@font/roboto_mono</item>
+        <item name="android:fontFamily">@font/roboto_mono</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="MyApp.ThemeOverlay.Slider" parent="">
+        <item name="fontFamily">@font/roboto_mono</item>
+        <item name="android:fontFamily">@font/roboto_mono</item>
     </style>
 </resources>
