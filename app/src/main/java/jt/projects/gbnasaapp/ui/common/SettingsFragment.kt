@@ -37,7 +37,8 @@ class SettingsFragment : Fragment() {
     private fun initSaveButton() {
         binding.buttonSaveSettings.setOnClickListener {
             SharedPref.settings.podHD = binding.switchPodHd.isChecked
-            SharedPref.settings.marsPhotoDaysBefore = binding.sliderMarsPhotoDaysBefore.value.toInt()
+            SharedPref.settings.marsPhotoDaysBefore =
+                binding.sliderMarsPhotoDaysBefore.value.toInt()
             SharedPref.save()
             requireActivity().supportFragmentManager.popBackStack()
         }

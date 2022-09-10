@@ -44,13 +44,14 @@ class MarsAdapter(private var onItemViewClickListener: OnItemViewClickListener?)
     inner class MarsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(photo: MarsPhoto) {
             with(itemView) {
-                findViewById<ImageView>(R.id.mars_image_view).also{
+                findViewById<ImageView>(R.id.mars_image_view).also {
                     it.load(photo.imgSrc)
                     it.setOnClickListener {
                         onItemViewClickListener?.onImageClick(photo)
                     }
                 }
-                findViewById<TextView>(R.id.mars_text_view).text = "${photo.earthDate} camera=${photo.camera.name} rover=${photo.rover.name}"
+                findViewById<TextView>(R.id.mars_text_view).text =
+                    "${photo.earthDate} camera=${photo.camera.name} rover=${photo.rover.name}"
             }
         }
     }

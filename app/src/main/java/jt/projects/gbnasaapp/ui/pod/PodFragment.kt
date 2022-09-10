@@ -13,6 +13,8 @@ import coil.load
 import jt.projects.gbnasaapp.R
 import jt.projects.gbnasaapp.databinding.PictureOfTheDayFragmentBinding
 import jt.projects.gbnasaapp.model.SharedPref
+import jt.projects.gbnasaapp.utils.ShowPictureInFullMode
+import jt.projects.gbnasaapp.utils.snackBar
 import jt.projects.gbnasaapp.utils.toast
 import jt.projects.gbnasaapp.viewmodel.pod.PictureOfTheDayData
 import jt.projects.gbnasaapp.viewmodel.pod.PictureOfTheDayViewModel
@@ -37,7 +39,7 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel.getDate().observe(viewLifecycleOwner) { renderData(it) }
+        viewModel.getLiveData().observe(viewLifecycleOwner) { renderData(it) }
         viewModel.loadPictureOfTheDayByDate(localDate)
         _binding = PictureOfTheDayFragmentBinding.inflate(inflater, container, false)
         return binding.root
@@ -49,7 +51,6 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
     }
 
     private fun renderData(data: PictureOfTheDayData) {
-
         when (data) {
             is PictureOfTheDayData.Success -> {
                 binding.podProgressBar.visibility = View.GONE
@@ -59,32 +60,17 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
                     url = serverResponseData.hdurl
                 }
                 if (url.isNullOrEmpty()) {
-                    toast("Link is empty")
+                    snackBar("Link is empty")
                 } else {
                     if (serverResponseData.mediaType == "image") {
-                        binding.imageViewPod.visibility = View.VISIBLE
-                        //Coil в работе: достаточно вызвать у нашего ImageView нужную extension - функцию и передать ссылку на изображение
-                        //а в лямбде указать дополнительные параметры (не обязательно) для отображения ошибки, процесса загрузки, анимации смены изображений
-                        binding.imageViewPod.load(url) {
-                            lifecycle(this@PodFragment)
-                            error(R.drawable.ic_load_error_vector)
-                            placeholder(R.drawable.ic_no_photo_vector)
-                            crossfade(true)
+                        showImage(url)
+                        binding.imageViewPod.setOnClickListener {
+                            snackBar("Идет загрузка изображения в HD...")
+                            serverResponseData.hdurl?.let {ShowPictureInFullMode(it)}
                         }
                     }
                     if (serverResponseData.mediaType == "video") {
-                        binding.imageViewPod.visibility = View.INVISIBLE
-                        binding.webview.visibility = View.VISIBLE
-                        serverResponseData.url?.let {
-                            binding.webview.apply {
-                                webViewClient = WebViewClient()
-                                settings.javaScriptEnabled = true
-                                settings.javaScriptCanOpenWindowsAutomatically = true
-                                settings.pluginState = WebSettings.PluginState.ON
-                                settings.mediaPlaybackRequiresUserGesture = false
-                                webChromeClient = WebChromeClient()
-                            }.loadUrl(it)
-                        }
+                        showVideo(serverResponseData.url)
                     }
                 }
                 with(data.serverResponseData) {
@@ -97,8 +83,35 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
             }
             is PictureOfTheDayData.Error -> {
                 binding.podProgressBar.visibility = View.GONE
-                toast(data.error.message)
+                data.error.message?.let { snackBar(it) }
             }
+        }
+    }
+
+    private fun showVideo(url: String?) {
+        binding.imageViewPod.visibility = View.INVISIBLE
+        binding.webview.visibility = View.VISIBLE
+        url?.let {
+            binding.webview.apply {
+                webViewClient = WebViewClient()
+                settings.javaScriptEnabled = true
+                settings.javaScriptCanOpenWindowsAutomatically = true
+                settings.pluginState = WebSettings.PluginState.ON
+                settings.mediaPlaybackRequiresUserGesture = false
+                webChromeClient = WebChromeClient()
+            }.loadUrl(it)
+        }
+    }
+
+    private fun showImage(url: String) {
+        binding.imageViewPod.visibility = View.VISIBLE
+        //Coil в работе: достаточно вызвать у нашего ImageView нужную extension - функцию и передать ссылку на изображение
+        //а в лямбде указать дополнительные параметры (не обязательно) для отображения ошибки, процесса загрузки, анимации смены изображений
+        binding.imageViewPod.load(url) {
+            lifecycle(this@PodFragment)
+            error(R.drawable.ic_load_error_vector)
+            placeholder(R.drawable.ic_no_photo_vector)
+            crossfade(true)
         }
     }
 }

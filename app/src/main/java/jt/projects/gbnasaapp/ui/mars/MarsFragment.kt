@@ -1,7 +1,5 @@
 package jt.projects.gbnasaapp.ui.mars
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +15,7 @@ import jt.projects.gbnasaapp.model.SharedPref
 import jt.projects.gbnasaapp.model.mars.MarsPhoto
 import jt.projects.gbnasaapp.utils.DURATION_ITEM_ANIMATOR
 import jt.projects.gbnasaapp.utils.OnItemViewClickListener
+import jt.projects.gbnasaapp.utils.ShowPictureInFullMode
 import jt.projects.gbnasaapp.utils.snackBar
 import jt.projects.gbnasaapp.viewmodel.mars.MarsData
 import jt.projects.gbnasaapp.viewmodel.mars.MarsViewModel
@@ -27,14 +26,10 @@ class MarsFragment : Fragment() {
 
     private var _binding: MarsFragmentBinding? = null
     private val binding get() = _binding!!
-    private val adapter = MarsAdapter(object : OnItemViewClickListener{
+    private val adapter = MarsAdapter(object : OnItemViewClickListener {
         override fun onImageClick(data: MarsPhoto) {
-            snackBar("${data.id}")
-            Intent().apply {
-                action = Intent.ACTION_VIEW
-                setDataAndType(Uri.parse(data.imgSrc), "image/*")
-                requireActivity().startActivity(this)
-            }
+        //    snackBar("${data.id}")
+            ShowPictureInFullMode(data.imgSrc)
         }
     })
 
@@ -57,8 +52,9 @@ class MarsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
-        viewModel.getDate().observe(viewLifecycleOwner) { renderData(it) }
-        val localDate: LocalDate = LocalDate.now().minusDays(SharedPref.settings.marsPhotoDaysBefore.toLong())
+        viewModel.getLiveData().observe(viewLifecycleOwner) { renderData(it) }
+        val localDate: LocalDate =
+            LocalDate.now().minusDays(SharedPref.settings.marsPhotoDaysBefore.toLong())
         viewModel.loadMarsByDate(localDate)
     }
 
@@ -66,7 +62,7 @@ class MarsFragment : Fragment() {
         binding.marsRecyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.marsRecyclerView.adapter = adapter
         //  разделитель карточек
-        DividerItemDecoration(requireContext(),GridLayoutManager.HORIZONTAL).also {
+        DividerItemDecoration(requireContext(), GridLayoutManager.HORIZONTAL).also {
             it.setDrawable(resources.getDrawable(R.drawable.separator, null))
             binding.marsRecyclerView.addItemDecoration(it)
         }

@@ -1,12 +1,16 @@
 package jt.projects.gbnasaapp.utils
 
 import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.view.Gravity
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 
+
+// **** VIEW ****
 // принимает текст для вывода или как строку, или как id Resources (String)
 fun <T> View.showSnackBarShort(text: T) {
     Snackbar.make(this, getUniString(context, text), Snackbar.LENGTH_SHORT).show()
@@ -23,6 +27,8 @@ fun <T, R> View.showSnackBarWithAction(text: T, actionText: R, action: () -> Uni
         .show()
 }
 
+
+// **** Activity ****
 fun Activity.toast(string: String?) {
     Toast.makeText(this, string, Toast.LENGTH_SHORT).apply {
         setGravity(Gravity.BOTTOM, 0, 250)
@@ -30,6 +36,8 @@ fun Activity.toast(string: String?) {
     }
 }
 
+
+// **** Fragment ****
 fun Fragment.toast(string: String?) {
     Toast.makeText(context, string, Toast.LENGTH_SHORT).apply {
         setGravity(Gravity.BOTTOM, 0, 250)
@@ -37,7 +45,14 @@ fun Fragment.toast(string: String?) {
     }
 }
 
-
 fun Fragment.snackBar(text: String) {
     this.view?.let { Snackbar.make(it, text, Snackbar.LENGTH_LONG).show() }
+}
+
+fun Fragment.ShowPictureInFullMode(src: String){
+    Intent().apply {
+        action = Intent.ACTION_VIEW
+        setDataAndType(Uri.parse(src), "image/*")
+        requireActivity().startActivity(this)
+    }
 }

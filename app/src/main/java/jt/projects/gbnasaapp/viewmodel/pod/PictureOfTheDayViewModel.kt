@@ -3,12 +3,9 @@ package jt.projects.gbnasaapp.viewmodel.pod
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import jt.projects.gbnasaapp.BuildConfig
-import jt.projects.gbnasaapp.model.pod.PODServerResponseData
 import jt.projects.gbnasaapp.model.pod.PODRetrofitImpl
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import jt.projects.gbnasaapp.model.pod.PODServerResponseData
+import jt.projects.gbnasaapp.model.retrofit.RetrofitCallback
 import java.time.LocalDate
 
 class PictureOfTheDayViewModel(
@@ -17,55 +14,26 @@ class PictureOfTheDayViewModel(
     private val retrofitImpl: PODRetrofitImpl = PODRetrofitImpl()
 ) : ViewModel() {
 
-    fun getDate(): LiveData<PictureOfTheDayData> {
+    fun getLiveData(): LiveData<PictureOfTheDayData> {
         return liveDataForViewToObserve
     }
 
     fun loadPictureOfTheDay() {
-        sendServerRequest(null)
+        retrofitImpl.getPictureOfTheDay(callback)
     }
+
 
     fun loadPictureOfTheDayByDate(date: LocalDate) {
-        sendServerRequest(date)
+        retrofitImpl.getPictureOfTheDayByDate(callback, date)
     }
 
-    private val callback = object : Callback<PODServerResponseData> {
-        override fun onResponse(
-            call: Call<PODServerResponseData>,
-            response: Response<PODServerResponseData>
-        ) {
-            if (response.isSuccessful && response.body() != null) {
-                liveDataForViewToObserve.value =
-                    PictureOfTheDayData.Success(response.body()!!)
-            } else {
-                val message = response.message()
-                if (message.isNullOrEmpty()) {
-                    liveDataForViewToObserve.value =
-                        PictureOfTheDayData.Error(Throwable("Unidentified error"))
-                } else {
-                    liveDataForViewToObserve.value =
-                        PictureOfTheDayData.Error(Throwable(message))
-                }
-            }
+    private val callback = object : RetrofitCallback<PODServerResponseData> {
+        override fun onResponse(data: PODServerResponseData) {
+            liveDataForViewToObserve.value = PictureOfTheDayData.Success(data)
         }
 
-        override fun onFailure(call: Call<PODServerResponseData>, t: Throwable) {
-            liveDataForViewToObserve.value = PictureOfTheDayData.Error(t)
-        }
-    }
-
-    private fun sendServerRequest(date: LocalDate?) {
-        liveDataForViewToObserve.value = PictureOfTheDayData.Loading(null)
-        val apiKey: String = BuildConfig.NASA_API_KEY
-        if (apiKey.isBlank()) {
-            liveDataForViewToObserve.value =
-                PictureOfTheDayData.Error(Throwable("You need API key"))
-        } else {
-            if (date == null) {
-                retrofitImpl.getRetrofitImpl().getPictureOfTheDay(apiKey).enqueue(callback)
-            } else
-                retrofitImpl.getRetrofitImpl().getPictureOfTheDayByDate(apiKey, date.toString())
-                    .enqueue(callback)
+        override fun onFailure(e: Throwable) {
+            liveDataForViewToObserve.value = PictureOfTheDayData.Error(e)
         }
     }
 }

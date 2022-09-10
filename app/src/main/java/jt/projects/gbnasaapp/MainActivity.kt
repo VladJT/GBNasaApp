@@ -2,10 +2,8 @@ package jt.projects.gbnasaapp
 
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -40,9 +38,9 @@ class MainActivity : AppCompatActivity() {
 
         // TODO костыль для решения вопроса отрисовки иконок меню при старте приложения
         // пока не понятна ошибка почему при старте - они не отрисовываются, но надо переделать
-        Thread{
+        Thread {
             Thread.sleep(2000)
-            runOnUiThread(){binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)}
+            runOnUiThread() { binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar) }
         }.start()
     }
 
