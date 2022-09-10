@@ -28,7 +28,7 @@ class MarsFragment : Fragment() {
     private val binding get() = _binding!!
     private val adapter = MarsAdapter(object : OnItemViewClickListener {
         override fun onImageClick(data: MarsPhoto) {
-        //    snackBar("${data.id}")
+            //    snackBar("${data.id}")
             ShowPictureInFullMode(data.imgSrc)
         }
     })

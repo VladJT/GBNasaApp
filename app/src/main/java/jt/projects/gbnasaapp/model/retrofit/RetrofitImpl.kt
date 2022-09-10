@@ -41,6 +41,7 @@ open class RetrofitImpl {
                     }
                 }
             }
+
             override fun onFailure(call: Call<T>, t: Throwable) {
                 callback.onFailure(t)
             }
