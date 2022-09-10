@@ -1,6 +1,7 @@
 package jt.projects.gbnasaapp.model.retrofit
 
 import com.google.gson.GsonBuilder
+import jt.projects.gbnasaapp.BuildConfig
 import jt.projects.gbnasaapp.utils.NASA_BASE_URL
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -13,6 +14,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
 open class RetrofitImpl {
+    var apiKey = BuildConfig.NASA_API_KEY
+
     inline fun <reified T> getRetrofitImpl(): T {
         val podRetrofit = Retrofit.Builder()
             .baseUrl(NASA_BASE_URL)
@@ -22,6 +25,13 @@ open class RetrofitImpl {
             .client(createOkHttpClient(PODInterceptor()))
             .build()
         return podRetrofit.create(T::class.java)
+    }
+
+    fun <T> isApiKeyGood(callback: RetrofitCallback<T>): Boolean{
+        return if (apiKey.isBlank()) {
+            callback.onFailure(Throwable("You need API key"))
+            false
+        } else true
     }
 
     fun <T> getCallbackFromRetrofit(callback: RetrofitCallback<T>): Callback<T> {
