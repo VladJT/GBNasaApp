@@ -49,7 +49,7 @@
     <style name="MyApp.Button" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">?attr/colorSecondary</item>
         <item name="rippleColor">@color/gold</item>
-        <item name="strokeWidth">2dp</item>
+        <item name="strokeWidth">1dp</item>
     </style>
 
     <!-- ********** EditText *********
