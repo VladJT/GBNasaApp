@@ -1,6 +1,9 @@
 <resources>
-    <string name="app_name">GBNasaApp</string>
+    <string name="app_name">Фото Nasa</string>
     <string name="choose_theme">Выбор темы</string>
     <string name="settings">Настройки</string>
     <string name="save">Сохранить</string>
+    <string name="theme_default">BlackNight (default)</string>
+    <string name="theme_1">Mars (Cut)</string>
+    <string name="theme_2">Neptune (Rounded)</string>
 </resources>

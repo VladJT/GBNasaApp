@@ -2,6 +2,7 @@ package jt.projects.gbnasaapp
 
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         // TODO костыль для решения вопроса отрисовки иконок меню при старте приложения
         // пока не понятна ошибка почему при старте - они не отрисовываются, но надо переделать
         Thread {
-            Thread.sleep(2000)
+            Thread.sleep(1500)
             runOnUiThread() { binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar) }
         }.start()
     }
@@ -129,9 +130,9 @@ class MainActivity : AppCompatActivity() {
             .setItems(items) { _, which ->
                 var newTheme = 0
                 when (items[which]) {
-                    "Astro (default_theme)" -> newTheme = R.style.Theme_GBNasaApp
-                    "Mars (Cut_style)" -> newTheme = R.style.AppTheme_Mars
-                    "Mercury (Rounded_style)" -> newTheme = R.style.AppTheme_Neptune
+                    resources.getString(R.string.theme_default) -> newTheme = R.style.Theme_GBNasaApp
+                    resources.getString(R.string.theme_1)  -> newTheme = R.style.AppTheme_Mars
+                    resources.getString(R.string.theme_2)  -> newTheme = R.style.AppTheme_Neptune
                 }
                 if (SharedPref.getData().theme != newTheme) {
                     SharedPref.settings.theme = newTheme
@@ -143,4 +144,22 @@ class MainActivity : AppCompatActivity() {
             .create().show()
     }
 
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount==0){
+            showExitDialog()
+        }else super.onBackPressed()
+    }
+
+    @Suppress("DEPRECATION")
+    fun showExitDialog() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Выход")
+            .setMessage("Вы уверены, что хотите выйти?")
+            .setPositiveButton(
+                android.R.string.yes
+            ) { _, _ ->  finish() }//иначе Activity переходит в "спящий режим" и остается в стеке
+            .setNegativeButton(android.R.string.no, null)
+            .setIcon(R.drawable.mars)
+            .show()
+    }
 }

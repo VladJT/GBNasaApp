@@ -17,10 +17,12 @@
     <color name="pink_dark">#aa00c7</color>
     <color name="pink_light">#ff79ff</color>
     <color name="colorAccent40Alfa">#6603DAC5</color>
-
-
     <color name="colorPrimary">#FF6200EE</color>
     <color name="colorAccent">#FF03DAC5</color>
+
+
+
+    <!-- THEMES -->
     <color name="mars.primaryColor">#ef9a9a</color>
     <color name="mars.primaryLightColor">#ffcccb</color>
     <color name="mars.primaryDarkColor">#ba6b6c</color>
@@ -29,6 +31,7 @@
     <color name="mars.secondaryDarkColor">#4b2c20</color>
     <color name="mars.primaryTextColor">#000000</color>
     <color name="mars.secondaryTextColor">#ffffff</color>
+
     <color name="neptune.primaryColor">#3f51b5</color>
     <color name="neptune.primaryLightColor">#757de8</color>
     <color name="neptune.primaryDarkColor">#002984</color>
@@ -38,27 +41,3 @@
     <color name="neptune.primaryTextColor">#ffffff</color>
     <color name="neptune.secondaryTextColor">#000000</color>
 </resources>
-
-    <!--
-
-        <color name="light_gray">#D3D3D3</color>
-        <color name="green_900">#004D40</color>
-        <color name="color_gray">#66000000</color>
-        <color name="indigo">#4B0082</color>
-        <color name="indigo_dark">#310062</color>
-        <color name="indigo_light">#4b0082</color>
-        <color name="orange">#ff5500</color>
-        <color name="transparent">#00000000</color>
-        <color name="date_color">#999999</color>
-        <color name="blue">#0066cc</color>
-        <color name="blueback">#99FFFF</color>
-        <color name="articlecolor">#3399FF</color>
-        <color name="article_title">#3399FF</color>
-        <color name="cachecolor">#8ad0e8</color>
-        <color name="colorAccent40Alfa">#6603DAC5</color>
-        <color name="pink_dark">#aa00c7</color>
-        <color name="pink_light">#ff79ff</color>
-        <color name="green_500">#4CAF50</color>
-        <color name="green_700">#388E3C</color>
-        <color name="teal_200">#80CBC4</color>
-    -->
