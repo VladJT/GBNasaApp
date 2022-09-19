@@ -49,7 +49,7 @@ fun Fragment.snackBar(text: String) {
     this.view?.let { Snackbar.make(it, text, Snackbar.LENGTH_LONG).show() }
 }
 
-fun Fragment.ShowPictureInFullMode(src: String) {
+fun Fragment.showPictureInFullMode(src: String) {
     Intent().apply {
         action = Intent.ACTION_VIEW
         setDataAndType(Uri.parse(src), "image/*")

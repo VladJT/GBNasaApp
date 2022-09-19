@@ -13,7 +13,7 @@ import coil.load
 import jt.projects.gbnasaapp.R
 import jt.projects.gbnasaapp.databinding.PictureOfTheDayFragmentBinding
 import jt.projects.gbnasaapp.model.SharedPref
-import jt.projects.gbnasaapp.utils.ShowPictureInFullMode
+import jt.projects.gbnasaapp.utils.showPictureInFullMode
 import jt.projects.gbnasaapp.utils.snackBar
 import jt.projects.gbnasaapp.viewmodel.pod.PictureOfTheDayData
 import jt.projects.gbnasaapp.viewmodel.pod.PictureOfTheDayViewModel
@@ -65,7 +65,7 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
                         showImage(url)
                         binding.imageViewPod.setOnClickListener {
                             snackBar("Идет загрузка изображения в HD...")
-                            serverResponseData.hdurl?.let { ShowPictureInFullMode(it) }
+                            serverResponseData.hdurl?.let { showPictureInFullMode(it) }
                         }
                     }
                     if (serverResponseData.mediaType == "video") {

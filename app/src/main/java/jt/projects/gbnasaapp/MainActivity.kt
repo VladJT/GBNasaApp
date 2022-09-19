@@ -2,7 +2,6 @@ package jt.projects.gbnasaapp
 
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -130,9 +129,10 @@ class MainActivity : AppCompatActivity() {
             .setItems(items) { _, which ->
                 var newTheme = 0
                 when (items[which]) {
-                    resources.getString(R.string.theme_default) -> newTheme = R.style.Theme_GBNasaApp
-                    resources.getString(R.string.theme_1)  -> newTheme = R.style.AppTheme_Mars
-                    resources.getString(R.string.theme_2)  -> newTheme = R.style.AppTheme_Neptune
+                    resources.getString(R.string.theme_default) -> newTheme =
+                        R.style.Theme_GBNasaApp
+                    resources.getString(R.string.theme_1) -> newTheme = R.style.AppTheme_Mars
+                    resources.getString(R.string.theme_2) -> newTheme = R.style.AppTheme_Neptune
                 }
                 if (SharedPref.getData().theme != newTheme) {
                     SharedPref.settings.theme = newTheme
@@ -145,9 +145,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if (supportFragmentManager.backStackEntryCount==0){
+        if (supportFragmentManager.backStackEntryCount == 0) {
             showExitDialog()
-        }else super.onBackPressed()
+        } else super.onBackPressed()
     }
 
     @Suppress("DEPRECATION")
@@ -157,7 +157,7 @@ class MainActivity : AppCompatActivity() {
             .setMessage("Вы уверены, что хотите выйти?")
             .setPositiveButton(
                 android.R.string.yes
-            ) { _, _ ->  finish() }//иначе Activity переходит в "спящий режим" и остается в стеке
+            ) { _, _ -> finish() }//иначе Activity переходит в "спящий режим" и остается в стеке
             .setNegativeButton(android.R.string.no, null)
             .setIcon(R.drawable.mars)
             .show()

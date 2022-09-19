@@ -24,14 +24,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:backgroundTint="?colorPrimaryDark"
-        app:navigationIconTint="?attr/colorOnPrimary"
         app:fabAlignmentMode="center"
         app:fabAnimationMode="scale"
         app:fabCradleRoundedCornerRadius="10dp"
         app:hideOnScroll="false"
         app:layout_scrollFlags="scroll|enterAlways"
         app:menu="@menu/menu_bottom_bar"
-        app:navigationIcon="@drawable/ic_hamburger_menu" />
+        app:navigationIcon="@drawable/ic_hamburger_menu"
+        app:navigationIconTint="?attr/colorOnPrimary" />
 
     <!-- Обязательно в CoordinatorLayout -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton

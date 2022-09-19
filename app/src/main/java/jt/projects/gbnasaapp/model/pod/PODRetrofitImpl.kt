@@ -8,7 +8,7 @@ class PODRetrofitImpl : RetrofitImpl() {
     private val retrofitImpl = getRetrofitImpl<PictureOfTheDayAPI>()
 
     fun getPictureOfTheDay(callback: RetrofitCallback<PODServerResponseData>) {
-        if(isApiKeyGood(callback)) {
+        if (isApiKeyGood(callback)) {
             retrofitImpl.getPictureOfTheDay(apiKey).enqueue(getCallbackFromRetrofit(callback))
         }
     }
@@ -17,7 +17,7 @@ class PODRetrofitImpl : RetrofitImpl() {
         callback: RetrofitCallback<PODServerResponseData>,
         date: LocalDate
     ) {
-        if(isApiKeyGood(callback)) {
+        if (isApiKeyGood(callback)) {
             retrofitImpl.getPictureOfTheDayByDate(apiKey, date.toString())
                 .enqueue(getCallbackFromRetrofit(callback))
         }

@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.GBNasaApp" parent="Theme.Material3.Dark.NoActionBar">
         <item name="android:forceDarkAllowed">true</item>
@@ -50,7 +50,8 @@
         <item name="colorOnPrimary">@color/neptune.primaryTextColor</item>
         <item name="colorOnSecondary">@color/neptune.secondaryColor</item>
         <item name="smallComponentShape">@style/MyApp.ShapeAppearance.SmallComponent.Rounded</item>
-        <item name="mediumComponentShape">@style/MyApp.ShapeAppearance.MediumComponent.Rounded</item>
+        <item name="mediumComponentShape">@style/MyApp.ShapeAppearance.MediumComponent.Rounded
+        </item>
         <item name="largeComponentShape">@style/MyApp.ShapeAppearance.LargeComponent.Rounded</item>
     </style>
 </resources>

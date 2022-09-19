@@ -15,7 +15,7 @@ import jt.projects.gbnasaapp.model.SharedPref
 import jt.projects.gbnasaapp.model.mars.MarsPhoto
 import jt.projects.gbnasaapp.utils.DURATION_ITEM_ANIMATOR
 import jt.projects.gbnasaapp.utils.OnItemViewClickListener
-import jt.projects.gbnasaapp.utils.ShowPictureInFullMode
+import jt.projects.gbnasaapp.utils.showPictureInFullMode
 import jt.projects.gbnasaapp.utils.snackBar
 import jt.projects.gbnasaapp.viewmodel.mars.MarsData
 import jt.projects.gbnasaapp.viewmodel.mars.MarsViewModel
@@ -29,7 +29,7 @@ class MarsFragment : Fragment() {
     private val adapter = MarsAdapter(object : OnItemViewClickListener {
         override fun onImageClick(data: MarsPhoto) {
             //    snackBar("${data.id}")
-            ShowPictureInFullMode(data.imgSrc)
+            showPictureInFullMode(data.imgSrc)
         }
     })
 

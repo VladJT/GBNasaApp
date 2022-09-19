@@ -27,7 +27,7 @@ open class RetrofitImpl {
         return podRetrofit.create(T::class.java)
     }
 
-    fun <T> isApiKeyGood(callback: RetrofitCallback<T>): Boolean{
+    fun <T> isApiKeyGood(callback: RetrofitCallback<T>): Boolean {
         return if (apiKey.isBlank()) {
             callback.onFailure(Throwable("You need API key"))
             false
