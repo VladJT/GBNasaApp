@@ -9,7 +9,6 @@ import jt.projects.gbnasaapp.utils.TODAY_FRAGMENT
 import jt.projects.gbnasaapp.utils.YESTERDAY_FRAGMENT
 import java.time.LocalDate
 
-
 // конструктор мы теперь передаем корневую Активити (или фрагмент), хотя
 //можно передавать FragmentManager вместе с Lifecycle, но первый способ предпочтительнее
 class PodViewPagerAdapter(fragmentActivity: FragmentActivity) :

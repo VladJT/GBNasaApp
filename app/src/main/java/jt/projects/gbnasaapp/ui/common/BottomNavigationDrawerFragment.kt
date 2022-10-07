@@ -11,6 +11,7 @@ import jt.projects.gbnasaapp.databinding.BottomNavigationLayoutBinding
 import jt.projects.gbnasaapp.utils.SETTINGS_FRAGMENT_TAG
 
 
+
 class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
 
     private var _binding: BottomNavigationLayoutBinding? = null

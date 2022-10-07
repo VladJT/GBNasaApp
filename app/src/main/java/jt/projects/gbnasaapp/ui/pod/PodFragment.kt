@@ -20,6 +20,7 @@ import jt.projects.gbnasaapp.viewmodel.pod.PictureOfTheDayViewModel
 import java.time.LocalDate
 
 
+
 class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
 
     private var _binding: PictureOfTheDayFragmentBinding? = null

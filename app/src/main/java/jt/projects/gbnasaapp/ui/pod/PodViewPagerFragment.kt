@@ -12,6 +12,7 @@ import jt.projects.gbnasaapp.utils.TODAY_FRAGMENT
 import jt.projects.gbnasaapp.utils.YESTERDAY_FRAGMENT
 import jt.projects.gbnasaapp.viewmodel.pod.PodViewPagerAdapter
 
+
 class PodViewPagerFragment : Fragment() {
     private var _binding: PictureOfTheDayMainBinding? = null
     private val binding get() = _binding!!

@@ -12,6 +12,7 @@ import jt.projects.gbnasaapp.R
 import jt.projects.gbnasaapp.model.mars.MarsPhoto
 import jt.projects.gbnasaapp.utils.OnItemViewClickListener
 
+
 class MarsAdapter(private var onItemViewClickListener: OnItemViewClickListener?) :
     RecyclerView.Adapter<MarsAdapter.MarsViewHolder>() {
 

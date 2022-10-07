@@ -2,7 +2,6 @@ package jt.projects.gbnasaapp.viewmodel.pod
 
 import jt.projects.gbnasaapp.model.pod.PODServerResponseData
 
-
 sealed class PictureOfTheDayData {
     data class Success(val serverResponseData: PODServerResponseData) :
         PictureOfTheDayData()

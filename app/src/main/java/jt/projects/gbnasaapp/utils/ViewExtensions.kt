@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 
-
 // **** VIEW ****
 // принимает текст для вывода или как строку, или как id Resources (String)
 fun <T> View.showSnackBarShort(text: T) {

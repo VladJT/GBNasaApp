@@ -4,6 +4,7 @@ import jt.projects.gbnasaapp.model.retrofit.RetrofitCallback
 import jt.projects.gbnasaapp.model.retrofit.RetrofitImpl
 import java.time.LocalDate
 
+
 class MarsRetrofitImpl : RetrofitImpl() {
     private val retrofitImpl = getRetrofitImpl<MarsAPI>()
 

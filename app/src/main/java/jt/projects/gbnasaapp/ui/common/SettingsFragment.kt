@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import jt.projects.gbnasaapp.databinding.FragmentSettingsBinding
 import jt.projects.gbnasaapp.model.SharedPref
 
-
 class SettingsFragment : Fragment() {
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!

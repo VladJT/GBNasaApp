@@ -8,6 +8,7 @@ import jt.projects.gbnasaapp.model.mars.MarsServerResponseData
 import jt.projects.gbnasaapp.model.retrofit.RetrofitCallback
 import java.time.LocalDate
 
+
 class MarsViewModel(
     private val liveDataForViewToObserve: MutableLiveData<MarsData> =
         MutableLiveData(),

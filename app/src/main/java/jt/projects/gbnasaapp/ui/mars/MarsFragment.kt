@@ -21,7 +21,6 @@ import jt.projects.gbnasaapp.viewmodel.mars.MarsData
 import jt.projects.gbnasaapp.viewmodel.mars.MarsViewModel
 import java.time.LocalDate
 
-
 class MarsFragment : Fragment() {
 
     private var _binding: MarsFragmentBinding? = null

@@ -16,6 +16,7 @@ import jt.projects.gbnasaapp.ui.pod.PodViewPagerFragment
 import jt.projects.gbnasaapp.utils.BOTTOM_NAV_FRAGMENT_TAG
 import jt.projects.gbnasaapp.utils.SETTINGS_FRAGMENT_TAG
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

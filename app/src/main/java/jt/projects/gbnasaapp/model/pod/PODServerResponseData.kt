@@ -2,6 +2,7 @@ package jt.projects.gbnasaapp.model.pod
 
 import com.google.gson.annotations.SerializedName
 
+
 data class PODServerResponseData(
     @field:SerializedName("copyright") val copyright: String?,
     @field:SerializedName("date") val date: String?,

@@ -8,6 +8,7 @@ import jt.projects.gbnasaapp.model.pod.PODServerResponseData
 import jt.projects.gbnasaapp.model.retrofit.RetrofitCallback
 import java.time.LocalDate
 
+
 class PictureOfTheDayViewModel(
     private val liveDataForViewToObserve: MutableLiveData<PictureOfTheDayData> =
         MutableLiveData(),
