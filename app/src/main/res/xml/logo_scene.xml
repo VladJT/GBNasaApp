@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:motion="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet
+        android:id="@+id/logo_mars">
+
+        <Constraint
+            android:id="@+id/logo_icon_solar"
+            android:layout_width="@dimen/logo_icon_size_small"
+            android:layout_height="@dimen/logo_icon_size_small"
+            android:scaleType="centerCrop"
+            android:src="@drawable/solar"
+            app:layout_constraintEnd_toStartOf="@id/logo_icon_mars"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="40dp" />
+
+        <Constraint
+            android:id="@+id/logo_icon_mars"
+            android:layout_width="@dimen/logo_icon_size"
+            android:layout_height="@dimen/logo_icon_size"
+            android:scaleType="centerCrop"
+            android:src="@drawable/mars"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/logo_icon_earth"
+            android:layout_width="@dimen/logo_icon_size_small"
+            android:layout_height="@dimen/logo_icon_size_small"
+            android:scaleType="centerCrop"
+            android:src="@drawable/earth"
+            app:layout_constraintStart_toEndOf="@id/logo_icon_mars"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="40dp" />
+
+    </ConstraintSet>
+
+    <ConstraintSet
+        android:id="@+id/logo_earth">
+        <Constraint
+            android:id="@+id/logo_icon_solar"
+            android:layout_width="@dimen/logo_icon_size_small"
+            android:layout_height="@dimen/logo_icon_size_small"
+            android:scaleType="centerCrop"
+            android:src="@drawable/solar"
+            app:layout_constraintStart_toEndOf="@id/logo_icon_earth"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="40dp" />
+
+        <Constraint
+            android:id="@+id/logo_icon_mars"
+            android:layout_width="@dimen/logo_icon_size_small"
+            android:layout_height="@dimen/logo_icon_size_small"
+            android:scaleType="centerCrop"
+            android:src="@drawable/mars"
+            app:layout_constraintEnd_toStartOf="@id/logo_icon_earth"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="40dp" />
+
+        <Constraint
+            android:id="@+id/logo_icon_earth"
+            android:layout_width="@dimen/logo_icon_size"
+            android:layout_height="@dimen/logo_icon_size"
+            android:scaleType="centerCrop"
+            android:src="@drawable/earth"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </ConstraintSet>
+
+
+
+    <Transition
+        motion:constraintSetStart="@id/logo_earth"
+        motion:constraintSetEnd="@id/logo_mars"
+        motion:duration="1000">
+        <OnClick motion:targetId="@id/logo_icon_mars" />
+    </Transition>
+
+    <Transition
+        motion:constraintSetStart="@id/logo_mars"
+        motion:constraintSetEnd="@id/logo_mars"
+        motion:duration="1000">
+        <OnClick motion:targetId="@id/logo_icon_mars" />
+    </Transition>
+
+    <Transition
+        motion:constraintSetStart="@id/logo_mars"
+        motion:constraintSetEnd="@id/logo_earth"
+        motion:duration="1000">
+        <OnClick motion:targetId="@id/logo_icon_earth" />
+    </Transition>
+
+    <Transition
+        motion:constraintSetStart="@id/logo_earth"
+        motion:constraintSetEnd="@id/logo_earth"
+        motion:duration="1000">
+        <OnClick motion:targetId="@id/logo_icon_earth" />
+    </Transition>
+
+</MotionScene>

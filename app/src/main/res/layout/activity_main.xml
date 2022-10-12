@@ -6,16 +6,105 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/logo_csl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/logo">
+
+                <androidx.constraintlayout.motion.widget.MotionLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutDescription="@xml/logo_scene">
+
+                    <Button
+                        android:id="@+id/btn1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="btn1"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/logo_icon_solar"
+                        android:layout_width="@dimen/logo_icon_size_small"
+                        android:layout_height="@dimen/logo_icon_size_small"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/solar"
+                        app:layout_constraintEnd_toStartOf="@id/logo_icon_mars"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="40dp" />
+
+                    <ImageView
+                        android:id="@+id/logo_icon_mars"
+                        android:layout_width="@dimen/logo_icon_size"
+                        android:layout_height="@dimen/logo_icon_size"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/mars"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                    <ImageView
+                        android:id="@+id/logo_icon_earth"
+                        android:layout_width="@dimen/logo_icon_size_small"
+                        android:layout_height="@dimen/logo_icon_size_small"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/earth"
+                        app:layout_constraintStart_toEndOf="@id/logo_icon_mars"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="40dp" />
+
+
+                </androidx.constraintlayout.motion.widget.MotionLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="?actionBarSize"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".ScrollingActivity"
+        tools:showIn="@layout/activity_main" />
 
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/fab_margin"
+        app:layout_anchor="@id/app_bar"
+        app:layout_anchorGravity="bottom|end"
+        app:srcCompat="@drawable/ic_baseline_rocket_launch_24" />
 
     <!-- Обязательно в CoordinatorLayout -->
     <com.google.android.material.bottomappbar.BottomAppBar
@@ -27,7 +116,7 @@
         app:fabAlignmentMode="center"
         app:fabAnimationMode="scale"
         app:fabCradleRoundedCornerRadius="10dp"
-        app:hideOnScroll="false"
+        app:hideOnScroll="true"
         app:layout_scrollFlags="scroll|enterAlways"
         app:menu="@menu/menu_bottom_bar"
         app:navigationIcon="@drawable/ic_hamburger_menu"
