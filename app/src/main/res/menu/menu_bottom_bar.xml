@@ -14,4 +14,10 @@
         android:title="Фото марса"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/menu_action_solar"
+        android:icon="@drawable/solar"
+        android:title="Others"
+        app:showAsAction="always" />
+
 </menu>

@@ -1,14 +1,10 @@
 package jt.projects.gbnasaapp
 
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuItem
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import jt.projects.gbnasaapp.databinding.ActivityMainBinding
 import jt.projects.gbnasaapp.model.SharedPref
@@ -30,8 +26,9 @@ class MainActivity : AppCompatActivity() {
         SharedPref.initSharedPreferencesContext(applicationContext)
         setTheme(SharedPref.getData().theme)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setSupportActionBar(binding.bottomAppBar)
-        initFabListener()
+        setSupportActionBar(binding.toolbar)
+        initToolbar()
+        //initFabListener()
 
         setContentView(binding.root)
         if (savedInstanceState == null) {
@@ -41,63 +38,78 @@ class MainActivity : AppCompatActivity() {
         }
 
         initLogoListener()
+        binding.fabTop.setOnClickListener {
+            showFragmentWithBS(SettingsFragment.newInstance(), SETTINGS_FRAGMENT_TAG)
+        }
 
-        // TODO костыль для решения вопроса отрисовки иконок меню при старте приложения
-        // пока не понятна ошибка почему при старте - они не отрисовываются, но надо переделать
-        Thread {
-            Thread.sleep(1500)
-            runOnUiThread() { binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar) }
-        }.start()
+        binding.bottomNavigationView.setOnItemSelectedListener { item ->
+            onOptionsItemSelected(item)
+            true
+        }
+
+
+//        // TODO костыль для решения вопроса отрисовки иконок меню при старте приложения
+//        // пока не понятна ошибка почему при старте - они не отрисовываются, но надо переделать
+//        Thread {
+//            Thread.sleep(1500)
+//            runOnUiThread() { binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar) }
+//        }.start()
     }
 
     private fun initLogoListener() {
-        binding.logoIconMars.setOnClickListener{
+        binding.logoIconMars.setOnClickListener {
             toast("mars")
             showFragment(MarsFragment.newInstance())
         }
-
         binding.logoIconSolar.setOnClickListener {
             toast("solar")
         }
-
         binding.logoIconEarth.setOnClickListener {
             toast("earth")
         }
     }
 
-    private fun initFabListener() {
-        binding.fab.setOnClickListener {
-            if (isMainMenuOnBottomBar) {
-                isMainMenuOnBottomBar = false
-                binding.bottomAppBar.navigationIcon = null
-                binding.bottomAppBar.fabAlignmentMode =
-                    BottomAppBar.FAB_ALIGNMENT_MODE_END
-                binding.fab.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        this,
-                        R.drawable.ic_back_fab
-                    )
-                )
-                binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar_other_screen)
-            } else {
-                isMainMenuOnBottomBar = true
-                binding.bottomAppBar.navigationIcon =
-                    ContextCompat.getDrawable(
-                        this,
-                        R.drawable.ic_hamburger_menu
-                    )
-                binding.bottomAppBar.fabAlignmentMode =
-                    BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-                binding.fab.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        this,
-                        R.drawable.ic_plus_fab
-                    )
-                )
-                binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
-            }
-        }
+    private fun initToolbar() {
+        binding.toolbar.navigationIcon =
+            ContextCompat.getDrawable(
+                this,
+                R.drawable.ic_hamburger_menu
+            )
     }
+
+//    private fun initFabListener() {
+//        binding.fab.setOnClickListener {
+//            if (isMainMenuOnBottomBar) {
+//                isMainMenuOnBottomBar = false
+//                binding.bottomAppBar.navigationIcon = null
+//                binding.bottomAppBar.fabAlignmentMode =
+//                    BottomAppBar.FAB_ALIGNMENT_MODE_END
+//                binding.fab.setImageDrawable(
+//                    ContextCompat.getDrawable(
+//                        this,
+//                        R.drawable.ic_back_fab
+//                    )
+//                )
+//                binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar_other_screen)
+//            } else {
+//                isMainMenuOnBottomBar = true
+//                binding.bottomAppBar.navigationIcon =
+//                    ContextCompat.getDrawable(
+//                        this,
+//                        R.drawable.ic_hamburger_menu
+//                    )
+//                binding.bottomAppBar.fabAlignmentMode =
+//                    BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
+//                binding.fab.setImageDrawable(
+//                    ContextCompat.getDrawable(
+//                        this,
+//                        R.drawable.ic_plus_fab
+//                    )
+//                )
+//                binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
+//            }
+//        }
+//    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -118,6 +130,9 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.menu_action_themes -> {
                 showThemeDialog()
+            }
+            R.id.menu_action_solar -> {
+                toast("В разработке...")
             }
         }
         return super.onOptionsItemSelected(item)
