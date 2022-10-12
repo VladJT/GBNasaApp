@@ -145,7 +145,6 @@
         <OnClick motion:targetId="@id/logo_icon_earth" />
     </Transition>
 
-
     <Transition
         motion:constraintSetEnd="@id/logo_solar"
         motion:constraintSetStart="@id/logo_earth"

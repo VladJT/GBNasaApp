@@ -100,39 +100,7 @@
         app:srcCompat="@drawable/ic_baseline_settings_24"
         app:tint="?attr/colorPrimaryVariant" />
 
-    <!--
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottom_app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:backgroundTint="?colorPrimaryDark"
-        app:fabAlignmentMode="center"
-        app:fabAnimationMode="scale"
-        app:fabCradleRoundedCornerRadius="10dp"
-        app:hideOnScroll="true"
-        app:layout_scrollFlags="scroll|enterAlways"
-        app:menu="@menu/menu_bottom_bar"
-        app:navigationIcon="@drawable/ic_hamburger_menu"
-        app:navigationIconTint="?attr/colorOnPrimary" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:fabSize="normal"
-        app:layout_anchor="@id/bottom_app_bar"
-        app:srcCompat="@drawable/ic_plus_fab"
-        app:tint="?attr/colorPrimaryVariant" />
-    -->
-
-    <!--
-        LABEL_VISIBILITY=SELECTED — подпись появляется только под выбранным элементом;
-        LABEL_VISIBILITY=LABELED — подпись видна всегда;
-        LABEL_VISIBILITY=UNLABELED — подпись скрыта;
-        LABEL_VISIBILITY=AUTO (поведение по умолчанию) — подпись ведёт себя LABELED для трёх
-        элементов и менее, SELECTED — для четырёх и более.
-        -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_view"
         style="@style/Widget.Material3.BottomNavigationView.ActiveIndicator"

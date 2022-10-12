@@ -19,7 +19,6 @@ import jt.projects.gbnasaapp.utils.toast
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private var isMainMenuOnBottomBar = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setSupportActionBar(binding.toolbar)
         initToolbar()
-        //initFabListener()
 
         setContentView(binding.root)
         if (savedInstanceState == null) {
@@ -47,13 +45,6 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-
-//        // TODO костыль для решения вопроса отрисовки иконок меню при старте приложения
-//        // пока не понятна ошибка почему при старте - они не отрисовываются, но надо переделать
-//        Thread {
-//            Thread.sleep(1500)
-//            runOnUiThread() { binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar) }
-//        }.start()
     }
 
     private fun initLogoListener() {
@@ -77,39 +68,6 @@ class MainActivity : AppCompatActivity() {
             )
     }
 
-//    private fun initFabListener() {
-//        binding.fab.setOnClickListener {
-//            if (isMainMenuOnBottomBar) {
-//                isMainMenuOnBottomBar = false
-//                binding.bottomAppBar.navigationIcon = null
-//                binding.bottomAppBar.fabAlignmentMode =
-//                    BottomAppBar.FAB_ALIGNMENT_MODE_END
-//                binding.fab.setImageDrawable(
-//                    ContextCompat.getDrawable(
-//                        this,
-//                        R.drawable.ic_back_fab
-//                    )
-//                )
-//                binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar_other_screen)
-//            } else {
-//                isMainMenuOnBottomBar = true
-//                binding.bottomAppBar.navigationIcon =
-//                    ContextCompat.getDrawable(
-//                        this,
-//                        R.drawable.ic_hamburger_menu
-//                    )
-//                binding.bottomAppBar.fabAlignmentMode =
-//                    BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-//                binding.fab.setImageDrawable(
-//                    ContextCompat.getDrawable(
-//                        this,
-//                        R.drawable.ic_plus_fab
-//                    )
-//                )
-//                binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
-//            }
-//        }
-//    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
