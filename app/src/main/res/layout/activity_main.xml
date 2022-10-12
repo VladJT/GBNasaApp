@@ -33,45 +33,36 @@
                     android:layout_height="match_parent"
                     app:layoutDescription="@xml/logo_scene">
 
-                    <Button
-                        android:id="@+id/btn1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="btn1"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
-
                     <ImageView
                         android:id="@+id/logo_icon_solar"
-                        android:layout_width="@dimen/logo_icon_size_small"
-                        android:layout_height="@dimen/logo_icon_size_small"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/solar"
-                        app:layout_constraintEnd_toStartOf="@id/logo_icon_mars"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:layout_marginTop="40dp" />
-
-                    <ImageView
-                        android:id="@+id/logo_icon_mars"
                         android:layout_width="@dimen/logo_icon_size"
                         android:layout_height="@dimen/logo_icon_size"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/mars"
+                        android:src="@drawable/solar"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/logo_icon_mars"
+                        android:layout_width="@dimen/logo_icon_size_small"
+                        android:layout_height="@dimen/logo_icon_size_small"
+                        android:layout_marginTop="40dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/mars"
+                        app:layout_constraintStart_toEndOf="@id/logo_icon_solar"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/logo_icon_earth"
                         android:layout_width="@dimen/logo_icon_size_small"
                         android:layout_height="@dimen/logo_icon_size_small"
+                        android:layout_marginTop="40dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/earth"
-                        app:layout_constraintStart_toEndOf="@id/logo_icon_mars"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:layout_marginTop="40dp" />
+                        app:layout_constraintEnd_toStartOf="@id/logo_icon_solar"
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
                 </androidx.constraintlayout.motion.widget.MotionLayout>

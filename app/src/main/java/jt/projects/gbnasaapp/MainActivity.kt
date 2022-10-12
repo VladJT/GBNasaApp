@@ -3,6 +3,8 @@ package jt.projects.gbnasaapp
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -16,6 +18,7 @@ import jt.projects.gbnasaapp.ui.mars.MarsFragment
 import jt.projects.gbnasaapp.ui.pod.PodViewPagerFragment
 import jt.projects.gbnasaapp.utils.BOTTOM_NAV_FRAGMENT_TAG
 import jt.projects.gbnasaapp.utils.SETTINGS_FRAGMENT_TAG
+import jt.projects.gbnasaapp.utils.toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,6 +40,8 @@ class MainActivity : AppCompatActivity() {
                 .commitNow()
         }
 
+        initLogoListener()
+
         // TODO костыль для решения вопроса отрисовки иконок меню при старте приложения
         // пока не понятна ошибка почему при старте - они не отрисовываются, но надо переделать
         Thread {
@@ -45,6 +50,20 @@ class MainActivity : AppCompatActivity() {
         }.start()
     }
 
+    private fun initLogoListener() {
+        binding.logoIconMars.setOnClickListener{
+            toast("mars")
+            showFragment(MarsFragment.newInstance())
+        }
+
+        binding.logoIconSolar.setOnClickListener {
+            toast("solar")
+        }
+
+        binding.logoIconEarth.setOnClickListener {
+            toast("earth")
+        }
+    }
 
     private fun initFabListener() {
         binding.fab.setOnClickListener {
