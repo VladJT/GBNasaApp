@@ -17,7 +17,7 @@
     <item
         android:id="@+id/menu_action_solar"
         android:icon="@drawable/solar"
-        android:title="Others"
+        android:title="Анимация"
         app:showAsAction="always" />
 
 </menu>

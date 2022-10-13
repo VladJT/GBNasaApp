@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import jt.projects.gbnasaapp.databinding.ActivityMainBinding
 import jt.projects.gbnasaapp.model.SharedPref
+import jt.projects.gbnasaapp.ui.animation.AnimationFragment
 import jt.projects.gbnasaapp.ui.common.BottomNavigationDrawerFragment
 import jt.projects.gbnasaapp.ui.common.SettingsFragment
 import jt.projects.gbnasaapp.ui.mars.MarsFragment
@@ -38,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         initLogoListener()
+
         binding.fabTop.setOnClickListener {
             showFragmentWithBS(SettingsFragment.newInstance(), SETTINGS_FRAGMENT_TAG)
         }
@@ -46,16 +48,10 @@ class MainActivity : AppCompatActivity() {
             onOptionsItemSelected(item)
             true
         }
-
-
-//        // TODO костыль для решения вопроса отрисовки иконок меню при старте приложения
-//        // пока не понятна ошибка почему при старте - они не отрисовываются, но надо переделать
-//        Thread {
-//            Thread.sleep(1500)
-//            runOnUiThread() { binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar) }
-//        }.start()
     }
 
+
+    // TODO почему-то не работает - надо переделать!
     private fun initLogoListener() {
         binding.logoIconMars.setOnClickListener {
             toast("mars")
@@ -125,14 +121,14 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_action_mars -> {
                 showFragment(MarsFragment.newInstance())
             }
+            R.id.menu_action_solar -> {
+                showFragment(AnimationFragment.newInstance())
+            }
             R.id.menu_action_settings -> {
                 showFragmentWithBS(SettingsFragment.newInstance(), SETTINGS_FRAGMENT_TAG)
             }
             R.id.menu_action_themes -> {
                 showThemeDialog()
-            }
-            R.id.menu_action_solar -> {
-                toast("В разработке...")
             }
         }
         return super.onOptionsItemSelected(item)

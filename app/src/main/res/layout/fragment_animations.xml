@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/transitions_container"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margin_std">
+
+
+        <TextView
+            android:id="@+id/textTransitionDefault"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transitions example"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/buttonTransitions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GO" />
+
+
+        <TextView
+            android:id="@+id/textSlide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="SomeAnimations"
+            android:visibility="gone" />
+
+
+</LinearLayout>
