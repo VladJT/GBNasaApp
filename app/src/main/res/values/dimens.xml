@@ -26,4 +26,8 @@
 
     <dimen name="logo_icon_size">80dp</dimen>
     <dimen name="logo_icon_size_small">50dp</dimen>
+
+    <dimen name="image_width_small">200dp</dimen>
+    <dimen name="image_height_small">200dp</dimen>
+    <dimen name="image_height_normal">600dp</dimen>
 </resources>

@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
     private fun initLogoListener() {
         binding.logoIconMars.setOnClickListener {
             toast("mars")
-            showFragment(MarsFragment.newInstance())
+         //   showFragment(MarsFragment.newInstance())
         }
         binding.logoIconSolar.setOnClickListener {
             toast("solar")

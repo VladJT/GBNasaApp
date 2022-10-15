@@ -9,11 +9,14 @@ import android.webkit.WebSettings
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.transition.ChangeBounds
+import androidx.transition.ChangeImageTransform
+import androidx.transition.TransitionManager
+import androidx.transition.TransitionSet
 import coil.load
 import jt.projects.gbnasaapp.R
 import jt.projects.gbnasaapp.databinding.PictureOfTheDayFragmentBinding
 import jt.projects.gbnasaapp.model.SharedPref
-import jt.projects.gbnasaapp.utils.showPictureInFullMode
 import jt.projects.gbnasaapp.utils.snackBar
 import jt.projects.gbnasaapp.viewmodel.pod.PictureOfTheDayData
 import jt.projects.gbnasaapp.viewmodel.pod.PictureOfTheDayViewModel
@@ -24,6 +27,8 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
 
     private var _binding: PictureOfTheDayFragmentBinding? = null
     private val binding get() = _binding!!
+    private var isExpanded = true
+
 
     //Ленивая инициализация модели
     private val viewModel: PictureOfTheDayViewModel by lazy {
@@ -64,8 +69,10 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
                     if (serverResponseData.mediaType == "image") {
                         showImage(url)
                         binding.imageViewPod.setOnClickListener {
-                            snackBar("Идет загрузка изображения в HD...")
-                            serverResponseData.hdurl?.let { showPictureInFullMode(it) }
+                            // snackBar("Идет загрузка изображения в HD...")
+                            // serverResponseData.hdurl?.let { showPictureInFullMode(it) }
+                            isExpanded = !isExpanded
+                            expandImage()
                         }
                     }
                     if (serverResponseData.mediaType == "video") {
@@ -84,6 +91,26 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
                 binding.podProgressBar.visibility = View.GONE
                 data.error.message?.let { snackBar(it) }
             }
+        }
+    }
+
+    private fun expandImage() {
+        TransitionManager.beginDelayedTransition(
+            binding.imageViewPodContainer, TransitionSet()
+                .addTransition(ChangeBounds())
+                .addTransition(ChangeImageTransform())
+        )
+        binding.imageViewPod.layoutParams.let { params ->
+            params.height =
+                if (isExpanded) resources.getDimensionPixelSize(R.dimen.image_height_normal)
+                else resources.getDimensionPixelSize(
+                    R.dimen.image_height_small
+                )
+            params.width =
+                if (isExpanded) ViewGroup.LayoutParams.MATCH_PARENT else resources.getDimensionPixelSize(
+                    R.dimen.image_width_small
+                )
+            binding.imageViewPod.layoutParams = params
         }
     }
 
