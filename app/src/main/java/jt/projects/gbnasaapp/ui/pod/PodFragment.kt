@@ -115,9 +115,9 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
             addTransition(changeBounds)
         }
 
-       // TransitionManager.beginDelayedTransition(binding.podAuthorContainer, textTransition)
+        // TransitionManager.beginDelayedTransition(binding.podAuthorContainer, textTransition)
         TransitionManager.beginDelayedTransition(binding.podDescriptionContainer, textTransition)
-        TransitionManager.beginDelayedTransition(binding.imageViewPodContainer,  imageTransition)
+        TransitionManager.beginDelayedTransition(binding.imageViewPodContainer, imageTransition)
     }
 
     private fun expandImagePod() {
@@ -137,7 +137,7 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
         binding.imageViewPod.layoutParams.let { params ->
             params.height = resources.getDimensionPixelSize(R.dimen.image_height_small)
             params.width = resources.getDimensionPixelSize(R.dimen.image_width_small)
-            binding.imageViewPod.layoutParams = params
+         //   binding.imageViewPod.layoutParams = params
         }
         binding.podDescription.visibility = View.VISIBLE
         binding.podAuthor.visibility = View.VISIBLE

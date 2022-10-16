@@ -3,6 +3,7 @@ package jt.projects.gbnasaapp
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -42,7 +43,9 @@ class MainActivity : AppCompatActivity() {
         initLogoListener()
 
         binding.fabTop.setOnClickListener {
-            ObjectAnimator.ofFloat(binding.fabTopImageview, "rotation", 0f, 360f).start()
+            ObjectAnimator.ofFloat(binding.fabTopImageview, View.ROTATION, 0f, 360f)
+                .setDuration(500L).start()
+            binding.fabTopImageview.animate().setDuration(1000L).alpha(0.1f)
             showFragmentWithBS(SettingsFragment.newInstance(), SETTINGS_FRAGMENT_TAG)
         }
 
