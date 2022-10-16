@@ -1,5 +1,6 @@
 package jt.projects.gbnasaapp.ui.mars
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -56,6 +57,13 @@ class MarsFragment : Fragment() {
         val localDate: LocalDate =
             LocalDate.now().minusDays(SharedPref.settings.marsPhotoDaysBefore.toLong())
         viewModel.loadMarsByDate(localDate)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            binding.marsScrollView.setOnScrollChangeListener { _, _, _, _, _ ->
+                binding.marsTextViewHeader.isSelected =
+                    binding.marsScrollView.canScrollVertically(-1)
+            }
+        }
     }
 
     private fun initRecyclerView() {

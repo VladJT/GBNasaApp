@@ -5,29 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_view_header"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:id="@+id/mars_text_view_header"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_std_small"
-        android:text="Снимки марса"
-        android:textColor="?attr/colorPrimary"
-        android:textSize="@dimen/margin_std_medium"
-        android:textStyle="bold"
+        android:stateListAnimator="@animator/toolbar_elevation"
+        android:background="@color/white"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mars_recycler_view"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mars_photos"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="@dimen/margin_std_medium"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/mars_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_header"
-        tools:listitem="@layout/mars_photo_card" />
+        app:layout_constraintTop_toBottomOf="@+id/mars_text_view_header">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mars_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/mars_photo_card" />
+    </androidx.core.widget.NestedScrollView>
 
     <ProgressBar
         android:id="@+id/mars_progress_bar"

@@ -7,4 +7,5 @@
     <string name="theme_1">Mars (Cut)</string>
     <string name="theme_2">Neptune (Rounded)</string>
     <string name="cancel">Отмена</string>
+    <string name="mars_photos">Снимки марса</string>
 </resources>
