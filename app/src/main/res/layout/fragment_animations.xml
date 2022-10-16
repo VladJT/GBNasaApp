@@ -1,43 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/transitions_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="@dimen/margin_std"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
 
-    <TextView
-        android:id="@+id/textTransitionDefault"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Transitions example"
-        android:visibility="gone" />
-
-    <Button
-        android:id="@+id/buttonTransitions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="GO" />
-
-
-    <TextView
-        android:id="@+id/textSlide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="SomeAnimations"
-        android:visibility="gone" />
-
-    <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/recycler_view"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="4" />
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <LinearLayout
+            android:id="@+id/container_transitions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transitions:" />
+
+            <TextView
+                android:id="@+id/text_transition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello, world"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/button_transitions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GO" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Движение по траектории:" />
+
+                <FrameLayout
+                    android:id="@+id/container_path"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:padding="24dp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:srcCompat="@drawable/logo" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/button_path"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|top"
+                        android:text="Path" />
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Перемешивание объектов  -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Перемешивание объектов:" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button_shuffle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Перемешать" />
+
+                <LinearLayout
+                    android:id="@+id/container_shuffle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" />
+            </LinearLayout>
+
+            <!-- Explode -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Explode:" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_explode"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="4" />
+            </androidx.cardview.widget.CardView>
+            >
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
