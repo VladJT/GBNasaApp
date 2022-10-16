@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnticipateOvershootInterpolator
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebViewClient
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.transition.ChangeBounds
 import androidx.transition.ChangeImageTransform
+import androidx.transition.Fade
 import androidx.transition.TransitionManager
 import androidx.transition.TransitionSet
 import coil.load
@@ -72,7 +74,10 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
                             // snackBar("Идет загрузка изображения в HD...")
                             // serverResponseData.hdurl?.let { showPictureInFullMode(it) }
                             isExpanded = !isExpanded
-                            expandImage()
+                            if (isExpanded)
+                                expandImagePod()
+                            else
+                                minimizeImagePod()
                         }
                     }
                     if (serverResponseData.mediaType == "video") {
@@ -80,8 +85,10 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
                     }
                 }
                 with(data.serverResponseData) {
+                    val author = copyright ?: "no Author"
                     binding.podHeader.text = "${title}"
-                    binding.podDescription.text = "${explanation}\n\n©️${copyright} - ${date}"
+                    binding.podDescription.text = "${explanation}\n\n©️${author} - ${date}"
+                    binding.podAuthor.text = "©️${author} - ${date}"
                 }
             }
             is PictureOfTheDayData.Loading -> {
@@ -94,24 +101,46 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
         }
     }
 
-    private fun expandImage() {
-        TransitionManager.beginDelayedTransition(
-            binding.imageViewPodContainer, TransitionSet()
-                .addTransition(ChangeBounds())
-                .addTransition(ChangeImageTransform())
-        )
+    private fun prepareAnimationPod() {
+        val imageTransition = ChangeBounds()
+        imageTransition.interpolator = AnticipateOvershootInterpolator(1.0f)
+        imageTransition.duration = 1000L
+
+        val textTransition = TransitionSet().apply {
+            val fade = Fade()
+            fade.duration = 1000L
+            addTransition(fade)
+            val changeBounds = ChangeBounds()
+            changeBounds.duration = 1000L
+            addTransition(changeBounds)
+        }
+
+       // TransitionManager.beginDelayedTransition(binding.podAuthorContainer, textTransition)
+        TransitionManager.beginDelayedTransition(binding.podDescriptionContainer, textTransition)
+        TransitionManager.beginDelayedTransition(binding.imageViewPodContainer,  imageTransition)
+    }
+
+    private fun expandImagePod() {
+        prepareAnimationPod()
+
         binding.imageViewPod.layoutParams.let { params ->
-            params.height =
-                if (isExpanded) resources.getDimensionPixelSize(R.dimen.image_height_normal)
-                else resources.getDimensionPixelSize(
-                    R.dimen.image_height_small
-                )
-            params.width =
-                if (isExpanded) ViewGroup.LayoutParams.MATCH_PARENT else resources.getDimensionPixelSize(
-                    R.dimen.image_width_small
-                )
+            params.height = resources.getDimensionPixelSize(R.dimen.image_height_normal)
+            params.width = ViewGroup.LayoutParams.MATCH_PARENT
             binding.imageViewPod.layoutParams = params
         }
+        binding.podDescription.visibility = View.GONE
+        binding.podAuthor.visibility = View.GONE
+    }
+
+    private fun minimizeImagePod() {
+        prepareAnimationPod()
+        binding.imageViewPod.layoutParams.let { params ->
+            params.height = resources.getDimensionPixelSize(R.dimen.image_height_small)
+            params.width = resources.getDimensionPixelSize(R.dimen.image_width_small)
+            binding.imageViewPod.layoutParams = params
+        }
+        binding.podDescription.visibility = View.VISIBLE
+        binding.podAuthor.visibility = View.VISIBLE
     }
 
     private fun showVideo(url: String?) {

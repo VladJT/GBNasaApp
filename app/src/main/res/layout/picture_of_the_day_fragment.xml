@@ -20,14 +20,47 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <jt.projects.gbnasaapp.utils.EquilateralImageView
-                android:id="@+id/image_view_pod"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/image_height_normal"
-                android:layout_gravity="center"
-                android:contentDescription="photo_of_the_day_stub"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ic_no_photo_vector" />
+                android:layout_height="match_parent">
+
+                <jt.projects.gbnasaapp.utils.EquilateralImageView
+                    android:id="@+id/image_view_pod"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/image_height_normal"
+                    android:layout_gravity="center"
+                    android:contentDescription="photo_of_the_day_stub"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_no_photo_vector" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/pod_author_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/image_view_pod"
+                    app:layout_constraintStart_toStartOf="@id/image_view_pod">
+
+                    <TextView
+                        android:id="@+id/pod_author"
+                        android:layout_width="@dimen/image_height_small"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/colorSecondary"
+                        android:paddingStart="@dimen/text_view_padding_std"
+                        android:paddingEnd="@dimen/text_view_padding_std"
+                        android:text="Author"
+                        android:textAlignment="center"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="@dimen/text_size_small"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
         <WebView
@@ -38,40 +71,58 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/pod_header"
-            android:layout_width="wrap_content"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/pod_description_container"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_std_small"
-            android:paddingStart="@dimen/text_view_padding_std"
-            android:paddingEnd="@dimen/text_view_padding_std"
-            android:text="Идет загрузка.."
-            android:textColor="?android:textColorPrimary"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_view_pod_container" />
+            app:layout_constraintTop_toBottomOf="@+id/image_view_pod_container">
 
-        <TextView
-            android:id="@+id/pod_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/text_view_padding_std"
-            android:paddingEnd="@dimen/text_view_padding_std"
-            android:text="Wait please..."
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pod_header" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <ProgressBar
-            android:id="@+id/pod_progress_bar"
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="@dimen/progress_bar_diameter_small"
-            android:layout_height="@dimen/progress_bar_diameter_small"
-            android:layout_gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/pod_header"
-            app:layout_constraintTop_toBottomOf="@+id/image_view_pod_container" />
+                <TextView
+                    android:id="@+id/pod_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_std_small"
+                    android:paddingStart="@dimen/text_view_padding_std"
+                    android:paddingEnd="@dimen/text_view_padding_std"
+                    android:text="Идет загрузка.."
+                    android:textSize="@dimen/text_size_std"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/pod_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/colorSecondary"
+                    android:paddingStart="@dimen/text_view_padding_std"
+                    android:paddingEnd="@dimen/text_view_padding_std"
+                    android:text="Wait please..."
+                    android:textColor="?attr/colorOnSecondary"
+                    android:textSize="@dimen/text_size_small"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pod_header" />
+
+                <ProgressBar
+                    android:id="@+id/pod_progress_bar"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="@dimen/progress_bar_diameter_small"
+                    android:layout_height="@dimen/progress_bar_diameter_small"
+                    android:layout_gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/pod_header" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
