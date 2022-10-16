@@ -6,4 +6,5 @@
     <string name="theme_default">BlackNight (default)</string>
     <string name="theme_1">Mars (Cut)</string>
     <string name="theme_2">Neptune (Rounded)</string>
+    <string name="cancel">Отмена</string>
 </resources>

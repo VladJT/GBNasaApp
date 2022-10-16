@@ -19,6 +19,7 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleTextAppearance="@android:color/transparent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:titleCollapseMode="scale"
             app:titleEnabled="false"
@@ -96,8 +97,16 @@
         android:layout_marginEnd="@dimen/fab_margin"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@drawable/ic_baseline_settings_24"
         app:tint="?attr/colorPrimaryVariant" />
+
+    <ImageView
+        android:id="@+id/fab_top_imageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        app:layout_anchor="@id/fab_top"
+        app:layout_anchorGravity="center"
+        app:srcCompat="@drawable/ic_baseline_settings_24" />
 
     <!--
     <com.google.android.material.bottomappbar.BottomAppBar

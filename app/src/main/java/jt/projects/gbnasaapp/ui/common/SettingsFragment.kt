@@ -31,6 +31,7 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initPodHdSwitch()
         initSaveButton()
+        initExitButton()
         initMarsDaysBeforeSlider()
     }
 
@@ -40,6 +41,12 @@ class SettingsFragment : Fragment() {
             SharedPref.settings.marsPhotoDaysBefore =
                 binding.sliderMarsPhotoDaysBefore.value.toInt()
             SharedPref.save()
+            requireActivity().supportFragmentManager.popBackStack()
+        }
+    }
+
+    private fun initExitButton() {
+        binding.buttonExitSettings.setOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()
         }
     }

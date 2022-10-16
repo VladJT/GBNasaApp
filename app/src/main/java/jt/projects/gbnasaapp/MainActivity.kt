@@ -1,10 +1,13 @@
 package jt.projects.gbnasaapp
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import jt.projects.gbnasaapp.databinding.ActivityMainBinding
 import jt.projects.gbnasaapp.model.SharedPref
@@ -15,7 +18,7 @@ import jt.projects.gbnasaapp.ui.mars.MarsFragment
 import jt.projects.gbnasaapp.ui.pod.PodViewPagerFragment
 import jt.projects.gbnasaapp.utils.BOTTOM_NAV_FRAGMENT_TAG
 import jt.projects.gbnasaapp.utils.SETTINGS_FRAGMENT_TAG
-import jt.projects.gbnasaapp.utils.toast
+import kotlin.math.abs
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         initLogoListener()
 
         binding.fabTop.setOnClickListener {
+            ObjectAnimator.ofFloat(binding.fabTopImageview, "rotation", 0f, 360f).start()
             showFragmentWithBS(SettingsFragment.newInstance(), SETTINGS_FRAGMENT_TAG)
         }
 
@@ -54,23 +58,33 @@ class MainActivity : AppCompatActivity() {
     // TODO почему-то не работает - надо переделать!
     private fun initLogoListener() {
         binding.logoIconMars.setOnClickListener {
-            toast("mars")
-         //   showFragment(MarsFragment.newInstance())
+            Toast.makeText(this, "mars", Toast.LENGTH_SHORT).show()
+            //   showFragment(MarsFragment.newInstance())
         }
         binding.logoIconSolar.setOnClickListener {
-            toast("solar")
+            Toast.makeText(this, "solar", Toast.LENGTH_SHORT).show()
         }
         binding.logoIconEarth.setOnClickListener {
-            toast("earth")
+            Toast.makeText(this, "earth", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun initToolbar() {
-        binding.toolbar.navigationIcon =
-            ContextCompat.getDrawable(
-                this,
-                R.drawable.ic_hamburger_menu
-            )
+        with(binding.toolbar) {
+            navigationIcon =
+                ContextCompat.getDrawable(
+                    this@MainActivity,
+                    R.drawable.ic_hamburger_menu
+                )
+        }
+//        (binding.toolbar as AppBarLayout).addOnOffsetChangedListener { appBarLayout, verticalOffset ->
+//            if (abs(verticalOffset) - appBarLayout.totalScrollRange == 0) {
+//                //  on Collapse
+//                binding.fabTopImageview.alpha = 0f
+//            } else {
+//                binding.fabTopImageview.alpha = 1f
+//            }
+//        }
     }
 
 //    private fun initFabListener() {
