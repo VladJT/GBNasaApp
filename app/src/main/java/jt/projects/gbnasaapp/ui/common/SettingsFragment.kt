@@ -1,6 +1,5 @@
 package jt.projects.gbnasaapp.ui.common
 
-import android.media.Image
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -64,7 +63,8 @@ class SettingsFragment : Fragment() {
 
 
     override fun onDestroyView() {
-        requireActivity().findViewById<ImageView>(R.id.fab_top_imageview).animate().setDuration(1000L).alpha(1f)
+        requireActivity().findViewById<ImageView>(R.id.fab_top_imageview).animate()
+            .setDuration(1000L).alpha(1f)
         _binding = null
         super.onDestroyView()
     }

@@ -45,13 +45,13 @@
                     android:id="@+id/pod_author"
                     android:layout_width="@dimen/image_height_small"
                     android:layout_height="wrap_content"
-                    android:text="Author"
-                    android:visibility="gone"
-                    android:textStyle="bold"
                     android:background="#E82121"
+                    android:text="Author"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_small" />
+                    android:textSize="@dimen/text_size_small"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
