@@ -1,6 +1,7 @@
 package jt.projects.gbnasaapp.ui.pod
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,13 +9,10 @@ import android.view.animation.AnticipateOvershootInterpolator
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebViewClient
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.transition.ChangeBounds
-import androidx.transition.ChangeImageTransform
-import androidx.transition.Fade
-import androidx.transition.TransitionManager
-import androidx.transition.TransitionSet
+import androidx.transition.*
 import coil.load
 import jt.projects.gbnasaapp.R
 import jt.projects.gbnasaapp.databinding.PictureOfTheDayFragmentBinding
@@ -102,6 +100,15 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
     }
 
     private fun prepareAnimationPod() {
+        //author
+//        val aTransition = ChangeBounds()
+//        TransitionManager.beginDelayedTransition(binding.photoContainer, aTransition)
+//        val constraintSet = ConstraintSet()
+//        constraintSet.clone(binding.photoContainer)
+//        constraintSet.connect(binding.podAuthorContainer.id, ConstraintSet.START, binding.imageViewPodContainer.id, ConstraintSet.START)
+//        constraintSet.connect(binding.podAuthorContainer.id, ConstraintSet.END, binding.imageViewPodContainer.id, ConstraintSet.END)
+//        constraintSet.applyTo(binding.photoContainer)
+
         val imageTransition = ChangeBounds()
         imageTransition.interpolator = AnticipateOvershootInterpolator(1.0f)
         imageTransition.duration = 1000L
@@ -115,8 +122,8 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
             addTransition(changeBounds)
         }
 
-        // TransitionManager.beginDelayedTransition(binding.podAuthorContainer, textTransition)
         TransitionManager.beginDelayedTransition(binding.podDescriptionContainer, textTransition)
+        TransitionManager.beginDelayedTransition(binding.podAuthorContainer, textTransition)
         TransitionManager.beginDelayedTransition(binding.imageViewPodContainer, imageTransition)
     }
 
@@ -137,7 +144,7 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
         binding.imageViewPod.layoutParams.let { params ->
             params.height = resources.getDimensionPixelSize(R.dimen.image_height_small)
             params.width = resources.getDimensionPixelSize(R.dimen.image_width_small)
-         //   binding.imageViewPod.layoutParams = params
+            binding.imageViewPod.layoutParams = params
         }
         binding.podDescription.visibility = View.VISIBLE
         binding.podAuthor.visibility = View.VISIBLE
@@ -159,6 +166,10 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
     }
 
     private fun showImage(url: String) {
+//        val imageTransition = ChangeImageTransform()
+//        imageTransition.interpolator = AnticipateOvershootInterpolator(1.0f)
+//        imageTransition.duration = 1000L
+
         binding.imageViewPod.visibility = View.VISIBLE
         //Coil в работе: достаточно вызвать у нашего ImageView нужную extension - функцию и передать ссылку на изображение
         //а в лямбде указать дополнительные параметры (не обязательно) для отображения ошибки, процесса загрузки, анимации смены изображений

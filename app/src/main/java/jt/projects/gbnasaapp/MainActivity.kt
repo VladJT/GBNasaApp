@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import jt.projects.gbnasaapp.databinding.ActivityMainBinding
 import jt.projects.gbnasaapp.model.SharedPref
@@ -152,6 +153,7 @@ class MainActivity : AppCompatActivity() {
     fun showFragment(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
+            .setCustomAnimations(R.animator.std_left, R.animator.std_right)
             .replace(binding.fragmentContainer.id, fragment)
             .commit()
     }
@@ -161,6 +163,7 @@ class MainActivity : AppCompatActivity() {
         if (f == null) {
             supportFragmentManager
                 .beginTransaction()
+                .setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right)
                 .replace(binding.fragmentContainer.id, fragment, fragmentTag)
                 .addToBackStack("")
                 .commit()
