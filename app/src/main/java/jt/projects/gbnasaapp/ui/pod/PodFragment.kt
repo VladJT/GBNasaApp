@@ -167,10 +167,6 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
     }
 
     private fun showImage(url: String) {
-//        val imageTransition = ChangeImageTransform()
-//        imageTransition.interpolator = AnticipateOvershootInterpolator(1.0f)
-//        imageTransition.duration = 1000L
-
         binding.imageViewPod.visibility = View.VISIBLE
         //Coil в работе: достаточно вызвать у нашего ImageView нужную extension - функцию и передать ссылку на изображение
         //а в лямбде указать дополнительные параметры (не обязательно) для отображения ошибки, процесса загрузки, анимации смены изображений

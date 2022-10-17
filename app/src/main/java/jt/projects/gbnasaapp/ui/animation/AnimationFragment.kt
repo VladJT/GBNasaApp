@@ -46,21 +46,7 @@ class AnimationFragment : Fragment() {
     // 1. ПРОСТАЯ АНИМАЦИЯ
     private fun setButtonTransitionsListener() {
         binding.buttonTransitions.setOnClickListener {
-            // Виды Transition
-            //можно менять: они определяются вторым аргументом для функции beginDelayedTransition:
-            //1. ChangeBounds меняет расположение элемента и его размеры, двигает нашу кнопку по
-            //умолчанию.
-            //2. Fade — медленное проявление и затухание элемента. Применяется для отображения нашего
-            //текста по умолчанию.
-            //3. TransitionSet — это набор других Transitions, таких как ChangeBounds или Fade.
-            //4. AutoTransition — TransitionSet, содержащий Fade out, ChangeBounds и Fade в таком
-            //порядке. То есть сначала исчезают view, которые должны исчезнуть, затем изменяется
-            //расположение остальных view, затем появляются новые. AutoTransition применяется по
-            //умолчанию, если вы не передаёте никаких параметров в качестве второго аргумента в
-            //функцию beginDelayedTransition.
-
             textIsVisible = !textIsVisible
-
             //TransitionManager.beginDelayedTransition(binding.transitionsContainer, Slide(Gravity.END))//Аналог Fade. Элемент появляется, не меняя видимость, а выезжая из-за границы экрана
             TransitionManager.beginDelayedTransition(binding.containerTransitions)
             binding.textTransition.visibility =

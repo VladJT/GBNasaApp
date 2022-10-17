@@ -78,49 +78,8 @@ class MainActivity : AppCompatActivity() {
                     R.drawable.ic_hamburger_menu
                 )
         }
-//        (binding.toolbar as AppBarLayout).addOnOffsetChangedListener { appBarLayout, verticalOffset ->
-//            if (abs(verticalOffset) - appBarLayout.totalScrollRange == 0) {
-//                //  on Collapse
-//                binding.fabTopImageview.alpha = 0f
-//            } else {
-//                binding.fabTopImageview.alpha = 1f
-//            }
-//        }
     }
 
-//    private fun initFabListener() {
-//        binding.fab.setOnClickListener {
-//            if (isMainMenuOnBottomBar) {
-//                isMainMenuOnBottomBar = false
-//                binding.bottomAppBar.navigationIcon = null
-//                binding.bottomAppBar.fabAlignmentMode =
-//                    BottomAppBar.FAB_ALIGNMENT_MODE_END
-//                binding.fab.setImageDrawable(
-//                    ContextCompat.getDrawable(
-//                        this,
-//                        R.drawable.ic_back_fab
-//                    )
-//                )
-//                binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar_other_screen)
-//            } else {
-//                isMainMenuOnBottomBar = true
-//                binding.bottomAppBar.navigationIcon =
-//                    ContextCompat.getDrawable(
-//                        this,
-//                        R.drawable.ic_hamburger_menu
-//                    )
-//                binding.bottomAppBar.fabAlignmentMode =
-//                    BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-//                binding.fab.setImageDrawable(
-//                    ContextCompat.getDrawable(
-//                        this,
-//                        R.drawable.ic_plus_fab
-//                    )
-//                )
-//                binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
-//            }
-//        }
-//    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
