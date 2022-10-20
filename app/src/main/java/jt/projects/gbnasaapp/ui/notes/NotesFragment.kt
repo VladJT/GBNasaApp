@@ -40,6 +40,7 @@ class NotesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         viewModel.getLiveData().observe(viewLifecycleOwner) { renderData(it) }
+        binding.recyclerNotesFAB.setOnClickListener { notesAdapter.appendItem() }
     }
 
     private fun initRecyclerView() {

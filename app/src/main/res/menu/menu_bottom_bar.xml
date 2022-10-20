@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/menu_action_pod"
-        android:icon="@drawable/pod"
+        android:icon="@android:drawable/ic_menu_gallery"
         android:title="Фото дня"
         app:showAsAction="always" />
 
@@ -17,12 +17,12 @@
     <item
         android:id="@+id/menu_action_notes"
         android:icon="@android:drawable/ic_menu_edit"
-        android:title="Список дел"
+        android:title="Заметки"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/menu_action_solar"
-        android:icon="@drawable/solar"
+        android:icon="@drawable/ic_baseline_rocket_launch_24"
         android:title="Анимация"
         app:showAsAction="always" />
 
