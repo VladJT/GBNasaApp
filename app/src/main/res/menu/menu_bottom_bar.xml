@@ -15,6 +15,12 @@
         app:showAsAction="always" />
 
     <item
+        android:id="@+id/menu_action_notes"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="Список дел"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/menu_action_solar"
         android:icon="@drawable/solar"
         android:title="Анимация"

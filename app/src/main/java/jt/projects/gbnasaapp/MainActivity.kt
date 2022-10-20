@@ -15,6 +15,7 @@ import jt.projects.gbnasaapp.ui.animation.AnimationFragment
 import jt.projects.gbnasaapp.ui.common.BottomNavigationDrawerFragment
 import jt.projects.gbnasaapp.ui.common.SettingsFragment
 import jt.projects.gbnasaapp.ui.mars.MarsFragment
+import jt.projects.gbnasaapp.ui.notes.NotesFragment
 import jt.projects.gbnasaapp.ui.pod.PodViewPagerFragment
 import jt.projects.gbnasaapp.utils.BOTTOM_NAV_FRAGMENT_TAG
 import jt.projects.gbnasaapp.utils.SETTINGS_FRAGMENT_TAG
@@ -53,6 +54,9 @@ class MainActivity : AppCompatActivity() {
             onOptionsItemSelected(item)
             true
         }
+
+        // !!!
+        showFragment(NotesFragment.newInstance())
     }
 
 
@@ -138,6 +142,9 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.menu_action_solar -> {
                 showFragment(AnimationFragment.newInstance())
+            }
+            R.id.menu_action_notes -> {
+                showFragment(NotesFragment.newInstance())
             }
             R.id.menu_action_settings -> {
                 showFragmentWithBS(SettingsFragment.newInstance(), SETTINGS_FRAGMENT_TAG)
