@@ -55,8 +55,6 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        // !!!
-        showFragment(NotesFragment.newInstance())
     }
 
 
