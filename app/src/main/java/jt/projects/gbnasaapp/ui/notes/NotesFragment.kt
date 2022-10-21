@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import jt.projects.gbnasaapp.databinding.RecyclerNotesBinding
+import jt.projects.gbnasaapp.model.notes.NotesData
 import jt.projects.gbnasaapp.ui.common.OnStartDragListener
 import jt.projects.gbnasaapp.utils.snackBar
 import jt.projects.gbnasaapp.viewmodel.notes.NotesDataStatus
 import jt.projects.gbnasaapp.viewmodel.notes.NotesViewModel
 
 class NotesFragment : Fragment() {
-
     private var _binding: RecyclerNotesBinding? = null
     private val binding get() = _binding!!
     private val viewModel: NotesViewModel by lazy {
@@ -30,6 +30,8 @@ class NotesFragment : Fragment() {
             itemTouchHelper.startDrag(viewHolder)
         }
     })
+
+    private var isNewList = false
 
 
     companion object {
@@ -57,6 +59,30 @@ class NotesFragment : Fragment() {
 
         itemTouchHelper = ItemTouchHelper(ItemTouchHelperCallback(notesAdapter))
         itemTouchHelper.attachToRecyclerView(binding.recyclerViewNotes)
+
+        binding.recyclerNotesDiff.setOnClickListener { changeAdapterData() }
+    }
+
+    private fun changeAdapterData() {
+        notesAdapter.setItems(createItemList(isNewList).map { it })
+        isNewList = !isNewList
+    }
+
+    private fun createItemList(instanceNumber: Boolean): List<Pair<NotesData, Boolean>> {
+        return when (instanceNumber) {
+            false -> listOf(
+                Pair(NotesData(type = NotesData.TYPE_HEADER), false),
+                Pair(NotesData(topic = "11", fullText = "Купить цветы жене"), false),
+                Pair(NotesData(topic = "232", fullText = "Купить цветы жене"), false),
+                Pair(NotesData(topic = "22", fullText = "Поменять резину на зимнюю"), false)
+            )
+            true -> listOf(
+                Pair(NotesData(type = NotesData.TYPE_HEADER), false),
+                Pair(NotesData(topic = "333", fullText = "Купить цветы жене"), false),
+                Pair(NotesData(topic = "444", fullText = "Поменять резину на зимнюю"), false),
+                Pair(NotesData(topic = "232", fullText = "Купить цветы жене"), false)
+            )
+        }
     }
 
     private fun initRecyclerView() {

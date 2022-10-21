@@ -23,6 +23,15 @@
         app:layout_constraintStart_toStartOf="parent"
         android:contentDescription="add note" />
 
+    <ImageButton
+        android:id="@+id/recyclerNotesDiff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/stat_notify_sync"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/recyclerNotesFAB"
+        android:contentDescription="add note" />
+
 
 
 

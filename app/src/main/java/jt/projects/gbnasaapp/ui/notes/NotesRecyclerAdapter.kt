@@ -9,10 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputLayout
 import jt.projects.gbnasaapp.R
+import jt.projects.gbnasaapp.model.notes.Change
 import jt.projects.gbnasaapp.model.notes.NotesData
+import jt.projects.gbnasaapp.model.notes.createCombinedPayload
 import jt.projects.gbnasaapp.ui.common.ItemTouchHelperAdapter
 import jt.projects.gbnasaapp.ui.common.ItemTouchHelperViewHolder
 import jt.projects.gbnasaapp.ui.common.OnStartDragListener
@@ -68,6 +71,38 @@ class NotesRecyclerAdapter(private val dragListener: OnStartDragListener) :
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         holder.bind(data[position])
     }
+
+    override fun onBindViewHolder(
+        holder: BaseViewHolder,
+        position: Int,
+        payloads: MutableList<Any>
+    ) {
+        if (payloads.isEmpty())
+            super.onBindViewHolder(holder, position, payloads)
+        else {
+            val combinedChange =
+                createCombinedPayload(payloads as List<Change<Pair<NotesData, Boolean>>>)
+            val oldData = combinedChange.oldData
+            val newData = combinedChange.newData
+            if (newData.first.fullText != oldData.first.fullText || newData.first.topic != oldData.first.topic) {
+                holder.itemView.findViewById<TextView>(R.id.notes_topic).text =
+                    newData.first.topic
+                holder.itemView.findViewById<TextView>(R.id.notes_fulltext).text =
+                    newData.first.fullText
+            }
+        }
+    }
+
+    //И добавим в адаптер метод для внесения изменений в наш RecyclerView. Этот метод как раз будет
+    //использовать DiffUtil для вычисления разницы (calculateDiff) и применения изменений в
+    //адаптере (dispatchUpdatesTo(adapter)).
+    fun setItems(newItems: List<Pair<NotesData, Boolean>>) {
+        val result = DiffUtil.calculateDiff(DiffUtilCallback(data, newItems))
+        result.dispatchUpdatesTo(this)
+        data.clear()
+        data.addAll(newItems)
+    }
+
 
     override fun getItemCount(): Int {
         return data.size
