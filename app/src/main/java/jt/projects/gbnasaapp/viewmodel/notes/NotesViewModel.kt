@@ -22,7 +22,7 @@ class NotesViewModel(
 
 
     private val callback = object : NotesCallback {
-        override fun onResponse(data: ArrayList<NotesData>?) {
+        override fun onResponse(data: MutableList<Pair<NotesData, Boolean>>?) {
             liveDataForViewToObserve.value = NotesDataStatus.Success(data)
         }
 

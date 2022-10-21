@@ -5,84 +5,93 @@
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_std">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/notes_topic_layout"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Тема"
-        app:counterEnabled="true"
-        app:counterMaxLength="20"
-        app:endIconCheckable="true"
-        app:endIconMode="custom"
-        app:endIconDrawable="@drawable/ic_archive"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/notes_topic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/notes_fulltext_layout"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_std"
-        android:hint="Заметка"
-        android:visibility="gone"
-        app:counterEnabled="true"
-        app:counterMaxLength="200"
-        app:endIconMode="clear_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/notes_topic_layout">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/notes_topic_layout"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Тема"
+            app:counterEnabled="true"
+            app:counterMaxLength="20"
+            app:endIconCheckable="true"
+            app:endIconDrawable="@drawable/ic_archive"
+            app:endIconMode="custom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/notes_fulltext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/notes_topic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/notes_fulltext_layout"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_std"
+            android:hint="Заметка"
+            android:visibility="gone"
+            app:counterEnabled="true"
+            app:counterMaxLength="200"
+            app:endIconMode="clear_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/notes_topic_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/notes_fulltext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/moveItemUp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="10dp"
+            app:layout_constraintStart_toEndOf="@id/notes_topic_layout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/arrow_up_float" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/moveItemDown"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="10dp"
+            app:layout_constraintStart_toEndOf="@id/moveItemUp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/arrow_down_float" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/addNote"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="10dp"
+            app:layout_constraintStart_toEndOf="@id/notes_topic_layout"
+            app:layout_constraintTop_toBottomOf="@id/moveItemUp"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/removeNote"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="10dp"
+            app:layout_constraintStart_toEndOf="@id/addNote"
+            app:layout_constraintTop_toBottomOf="@id/moveItemUp"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/addNote"
+        android:id="@+id/dragHandleNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="8dp"
+        android:tint="@color/cardview_shadow_start_color"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/removeNote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:foregroundGravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/addNote"
-        app:srcCompat="@android:drawable/ic_delete" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/moveItemUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:tint="@color/design_default_color_error"
-        app:layout_constraintStart_toEndOf="@id/notes_topic_layout"
-        app:layout_constraintTop_toBottomOf="@id/notes_topic_layout"
-        app:layout_constraintTop_toTopOf="@id/notes_topic_layout"
-        app:srcCompat="@android:drawable/arrow_up_float" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/moveItemDown"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:tint="@color/design_default_color_error"
-        app:layout_constraintStart_toEndOf="@id/moveItemUp"
-        app:layout_constraintTop_toBottomOf="@id/notes_topic_layout"
-        app:layout_constraintTop_toTopOf="@id/notes_topic_layout"
-        app:srcCompat="@android:drawable/arrow_down_float" />
-
+        app:srcCompat="@drawable/ic_hamburger_menu"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,16 +1,13 @@
 package jt.projects.gbnasaapp.model.notes
 
-import jt.projects.gbnasaapp.model.notes.INotesRepository
-import jt.projects.gbnasaapp.model.notes.NotesData
-import jt.projects.gbnasaapp.viewmodel.notes.NotesDataStatus
-
 class NotesLocalRepository : INotesRepository {
 
     override fun getData(callback: NotesCallback) {
         val data = arrayListOf(
-            NotesData(type = 0),
-            NotesData(topic = "Тема 1", fullText = "Содержание 1"),
-            NotesData(topic = "Тема 2", fullText = "Содержание 2"))
+            Pair(NotesData(type = NotesData.TYPE_HEADER), false),
+            Pair(NotesData(topic = "17.11 Цветы", fullText = "Купить цветы жене"), false),
+            Pair(NotesData(topic = "19.11 Авто", fullText = "Поменять резину на зимнюю"), false)
+        )
         callback.onResponse(data)
     }
 }

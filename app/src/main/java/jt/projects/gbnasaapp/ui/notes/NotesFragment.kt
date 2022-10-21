@@ -7,8 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import jt.projects.gbnasaapp.databinding.RecyclerNotesBinding
+import jt.projects.gbnasaapp.ui.common.OnStartDragListener
 import jt.projects.gbnasaapp.utils.snackBar
 import jt.projects.gbnasaapp.viewmodel.notes.NotesDataStatus
 import jt.projects.gbnasaapp.viewmodel.notes.NotesViewModel
@@ -20,7 +23,13 @@ class NotesFragment : Fragment() {
     private val viewModel: NotesViewModel by lazy {
         ViewModelProvider.NewInstanceFactory().create(NotesViewModel::class.java)
     }
-    private val notesAdapter = NotesRecyclerAdapter()
+
+    lateinit var itemTouchHelper: ItemTouchHelper
+    private val notesAdapter = NotesRecyclerAdapter(object : OnStartDragListener {
+        override fun onStartDrag(viewHolder: RecyclerView.ViewHolder) {
+            itemTouchHelper.startDrag(viewHolder)
+        }
+    })
 
 
     companion object {
@@ -41,6 +50,13 @@ class NotesFragment : Fragment() {
         initRecyclerView()
         viewModel.getLiveData().observe(viewLifecycleOwner) { renderData(it) }
         binding.recyclerNotesFAB.setOnClickListener { notesAdapter.appendItem() }
+
+        ItemTouchHelper(ItemTouchHelperCallback(notesAdapter))
+            .attachToRecyclerView(binding.recyclerViewNotes)
+
+
+        itemTouchHelper = ItemTouchHelper(ItemTouchHelperCallback(notesAdapter))
+        itemTouchHelper.attachToRecyclerView(binding.recyclerViewNotes)
     }
 
     private fun initRecyclerView() {
