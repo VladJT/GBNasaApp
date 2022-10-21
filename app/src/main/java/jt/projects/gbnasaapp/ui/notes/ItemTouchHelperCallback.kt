@@ -81,6 +81,7 @@ class ItemTouchHelperCallback(private val adapter: NotesRecyclerAdapter) :
         itemViewHolder.onItemClear()
     }
 
+
     //ItemTouchHelper.Callback наследуется от RecyclerView.ItemDecoration, а
     //значит, мы можем переопределять анимацию свайпа самостоятельно. Например, в нашем классе
     //ItemTouchHelperCallback можно переопределить метод onChildDraw и менять прозрачность

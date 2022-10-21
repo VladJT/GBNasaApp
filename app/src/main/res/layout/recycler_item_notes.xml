@@ -5,8 +5,6 @@
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_std">
 
-
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/notes_topic_layout"
             android:layout_width="250dp"

@@ -8,6 +8,7 @@ data class Change<out T>(
 )
 
 
+
 fun <T> createCombinedPayload(payloads: List<Change<T>>): Change<T> {
     assert(payloads.isNotEmpty())
     val firstChange = payloads.first()

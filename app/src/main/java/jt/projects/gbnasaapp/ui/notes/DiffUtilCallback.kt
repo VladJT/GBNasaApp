@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.DiffUtil
 import jt.projects.gbnasaapp.model.notes.Change
 import jt.projects.gbnasaapp.model.notes.NotesData
 
+
 class DiffUtilCallback(
     private var oldItems: List<Pair<NotesData, Boolean>>,
     private var newItems: List<Pair<NotesData, Boolean>>

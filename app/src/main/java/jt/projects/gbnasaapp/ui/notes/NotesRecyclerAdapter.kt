@@ -68,6 +68,7 @@ class NotesRecyclerAdapter(private val dragListener: OnStartDragListener) :
         }
     }
 
+
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         holder.bind(data[position])
     }

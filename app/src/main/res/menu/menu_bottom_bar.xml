@@ -8,6 +8,7 @@
         android:title="Фото дня"
         app:showAsAction="always" />
 
+
     <item
         android:id="@+id/menu_action_mars"
         android:icon="@drawable/mars"
