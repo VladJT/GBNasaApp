@@ -1,8 +1,10 @@
 package jt.projects.gbnasaapp.ui.notes
 
+import android.graphics.Canvas
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import jt.projects.gbnasaapp.ui.common.ItemTouchHelperViewHolder
+import kotlin.math.abs
 
 //Это интерфейс, который позволяет вам подписаться на события, связанные с перетаскиванием и
 //смахиванием элементов списка. Там же вы можете контролировать состояние выбранного элемента
@@ -77,5 +79,31 @@ class ItemTouchHelperCallback(private val adapter: NotesRecyclerAdapter) :
         super.clearView(recyclerView, viewHolder)
         val itemViewHolder = viewHolder as ItemTouchHelperViewHolder
         itemViewHolder.onItemClear()
+    }
+
+    //ItemTouchHelper.Callback наследуется от RecyclerView.ItemDecoration, а
+    //значит, мы можем переопределять анимацию свайпа самостоятельно. Например, в нашем классе
+    //ItemTouchHelperCallback можно переопределить метод onChildDraw и менять прозрачность
+    //элемента. Чем дальше мы его смахиваем, тем прозрачней он становится:
+    override fun onChildDraw(
+        c: Canvas,
+        recyclerView: RecyclerView,
+        viewHolder: RecyclerView.ViewHolder,
+        dX: Float,
+        dY: Float,
+        actionState: Int,
+        isCurrentlyActive: Boolean
+    ) {
+        if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+            val width = viewHolder.itemView.width.toFloat()
+            val alpha = 1.0f - abs(dX) / width
+            viewHolder.itemView.alpha = alpha
+            viewHolder.itemView.translationX = dX
+        } else {
+            super.onChildDraw(
+                c, recyclerView, viewHolder, dX, dY,
+                actionState, isCurrentlyActive
+            )
+        }
     }
 }
