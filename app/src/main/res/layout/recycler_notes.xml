@@ -18,21 +18,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:contentDescription="add note"
         android:src="@drawable/ic_plus_fab"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="add note" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/recyclerNotesDiff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="add note"
         android:src="@android:drawable/stat_notify_sync"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/recyclerNotesFAB"
-        android:contentDescription="add note" />
-
-
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

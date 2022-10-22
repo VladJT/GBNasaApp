@@ -1,6 +1,5 @@
 package jt.projects.gbnasaapp.viewmodel.notes
 
-import jt.projects.gbnasaapp.model.mars.MarsServerResponseData
 import jt.projects.gbnasaapp.model.notes.NotesData
 
 sealed class NotesDataStatus {
