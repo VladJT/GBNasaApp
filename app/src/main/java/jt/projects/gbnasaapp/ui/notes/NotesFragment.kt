@@ -31,9 +31,6 @@ class NotesFragment : Fragment() {
         }
     })
 
-    private var isNewList = false
-
-
     companion object {
         fun newInstance() = NotesFragment()
     }
@@ -60,32 +57,10 @@ class NotesFragment : Fragment() {
         itemTouchHelper = ItemTouchHelper(ItemTouchHelperCallback(notesAdapter))
         itemTouchHelper.attachToRecyclerView(binding.recyclerViewNotes)
 
-        binding.recyclerNotesDiff.setOnClickListener { changeAdapterData() }
+        binding.recyclerNotesDiff.setOnClickListener { viewModel.setTestData() }
     }
 
-    private fun changeAdapterData() {
-        notesAdapter.setItems(createItemList(isNewList).map { it })
-        isNewList = !isNewList
-    }
 
-    private fun createItemList(instanceNumber: Boolean): List<Pair<NotesData, Boolean>> {
-        return when (instanceNumber) {
-            false -> listOf(
-                Pair(NotesData(id = -1, type = NotesData.TYPE_HEADER), false),
-                Pair(NotesData(id = 0, topic = "11", fullText = "Купить цветы жене"), false),
-                Pair(NotesData(id = 1, topic = "232", fullText = "Купить цветы жене"), false),
-                Pair(NotesData(id = 2, topic = "22", fullText = "Поменять резину на зимнюю"), false),
-                Pair(NotesData(id = 3, topic = "апрар", fullText = "Поменять резину на зимнюю"), false)
-            )
-            true -> listOf(
-                Pair(NotesData(id = -1, type = NotesData.TYPE_HEADER), false),
-                Pair(NotesData(id = 0, topic = "11", fullText = "Купить цветы жене"), false),
-                Pair(NotesData(id = 1, topic = "45", fullText = "45 цветы жене"), false),
-                Pair(NotesData(id = 2, topic = "22", fullText = "Поменять резину на зимнюю"), false),
-                Pair(NotesData(id = 3, topic = "!!", fullText = "Поменять резину на зимнюю"), false)
-            )
-        }
-    }
 
     private fun initRecyclerView() {
         binding.recyclerViewNotes.apply {
