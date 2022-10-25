@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.cardview.widget.CardView
+            <jt.projects.gbnasaapp.ui.common.PaintView
                 android:id="@+id/image_view_pod_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -31,12 +31,14 @@
                     android:contentDescription="photo_of_the_day_stub"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/ic_no_photo_vector" />
-            </androidx.cardview.widget.CardView>
+            </jt.projects.gbnasaapp.ui.common.PaintView>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/pod_author_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:cardBackgroundColor="@android:color/transparent"
+                android:background="@android:color/transparent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
@@ -45,12 +47,10 @@
                     android:id="@+id/pod_author"
                     android:layout_width="@dimen/image_height_small"
                     android:layout_height="wrap_content"
-                    android:background="#E82121"
                     android:text="Author"
                     android:textAlignment="center"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/text_size_small"
-                    android:textStyle="bold"
                     android:visibility="gone" />
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>

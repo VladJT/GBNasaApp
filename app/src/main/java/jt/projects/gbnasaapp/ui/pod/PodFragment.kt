@@ -1,6 +1,10 @@
 package jt.projects.gbnasaapp.ui.pod
 
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.style.ImageSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +12,9 @@ import android.view.animation.AnticipateOvershootInterpolator
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebViewClient
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
+import androidx.core.text.toSpannable
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.transition.ChangeBounds
@@ -19,6 +26,8 @@ import jt.projects.gbnasaapp.R
 import jt.projects.gbnasaapp.databinding.PictureOfTheDayFragmentBinding
 import jt.projects.gbnasaapp.model.SharedPref
 import jt.projects.gbnasaapp.utils.snackBar
+import jt.projects.gbnasaapp.utils.toDecoratedDescription
+import jt.projects.gbnasaapp.utils.toDecoratedSign
 import jt.projects.gbnasaapp.viewmodel.pod.PictureOfTheDayData
 import jt.projects.gbnasaapp.viewmodel.pod.PictureOfTheDayViewModel
 import java.time.LocalDate
@@ -85,9 +94,25 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
                 }
                 with(data.serverResponseData) {
                     val author = copyright ?: "no Author"
-                    binding.podHeader.text = "${title}"
-                    binding.podDescription.text = "${explanation}\n\n©️${author} - ${date}"
-                    binding.podAuthor.text = "©️${author} - ${date}"
+
+                    val face = ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_baseline_place_24
+                    )!!.toBitmap()
+
+                    val sTitle = SpannableString("_ ${title}").apply {
+                        setSpan(
+                            ImageSpan(requireContext(), face),
+                            0,
+                            1,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                        )
+                    }
+
+                    binding.podHeader.text = sTitle
+                    // binding.podDescription.text = "${explanation}\n\n©️${authorSpan} - ${date}"
+                    binding.podDescription.text = explanation!!.toDecoratedDescription()
+                    binding.podAuthor.text = "©${author} - ${date}".toDecoratedSign()
                 }
             }
             is PictureOfTheDayData.Loading -> {
@@ -99,6 +124,7 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
             }
         }
     }
+
 
     private fun prepareAnimationPod() {
         //author
