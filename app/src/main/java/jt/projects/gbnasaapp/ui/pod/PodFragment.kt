@@ -192,6 +192,7 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
         }
     }
 
+
     private fun showImage(url: String) {
 //        val imageTransition = ChangeImageTransform()
 //        imageTransition.interpolator = AnticipateOvershootInterpolator(1.0f)

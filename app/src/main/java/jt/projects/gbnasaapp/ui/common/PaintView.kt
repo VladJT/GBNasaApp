@@ -20,7 +20,6 @@ class PaintView @JvmOverloads constructor(
 
     val cellSize = 30
 
-
     override fun onDraw(canvas: Canvas) {
         val mPaint = Paint()
         mPaint.color = MaterialColors.getColor(this, com.google.android.material.R.attr.colorPrimary)
