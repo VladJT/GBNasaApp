@@ -93,7 +93,7 @@ class SplashActivity : AppCompatActivity() {
             spacemanTransition
         )
 
-        binding.imageViewSpaceman.animate().alpha(1F).setDuration(SPLASH_DELAY/2)
+        binding.imageViewSpaceman.animate().alpha(1F).setDuration(SPLASH_DELAY / 2)
         binding.imageViewSpaceman.animate().rotationBy(900F).setDuration(SPLASH_DELAY)
 
         val params = binding.imageViewSpaceman.layoutParams as FrameLayout.LayoutParams

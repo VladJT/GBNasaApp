@@ -11,16 +11,16 @@
         android:id="@+id/transitions_container_rocket"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="80dp"
         android:layout_marginHorizontal="@dimen/splash_screen_margins"
+        android:layout_marginTop="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/image_view_rocket"
             android:layout_width="80dp"
-            android:layout_gravity="start|bottom"
             android:layout_height="80dp"
+            android:layout_gravity="start|bottom"
             android:rotation="-10"
             app:srcCompat="@drawable/rocket" />
     </FrameLayout>
@@ -34,10 +34,10 @@
         app:srcCompat="@drawable/solar" />
 
     <FrameLayout
-        android:layout_marginHorizontal="@dimen/splash_screen_margins"
         android:id="@+id/transitions_container_spaceman"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/splash_screen_margins"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,19 +47,19 @@
             android:id="@+id/image_view_spaceman"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:alpha="0.2"
             android:layout_gravity="start|top"
+            android:alpha="0.2"
             app:srcCompat="@drawable/spaceman" />
     </FrameLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:alpha="0.81"
+        android:fontFamily="@font/beer"
         android:text="GBNASA App"
         android:textColor="#FFFFFF"
-        android:alpha="0.81"
         android:textSize="24sp"
-        android:fontFamily="@font/beer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_view_loading" />
@@ -69,8 +69,8 @@
         android:id="@+id/image_view_loading"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_margin="40dp"
         android:layout_gravity="center"
+        android:layout_margin="40dp"
         android:alpha="0.1"
 
         app:layout_constraintBottom_toBottomOf="parent"
