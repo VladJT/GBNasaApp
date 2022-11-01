@@ -3,7 +3,6 @@ package jt.projects.gbnasaapp.ui.pod
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
-import android.text.SpannableStringBuilder
 import android.text.style.ImageSpan
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +13,6 @@ import android.webkit.WebSettings
 import android.webkit.WebViewClient
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
-import androidx.core.text.toSpannable
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.transition.ChangeBounds

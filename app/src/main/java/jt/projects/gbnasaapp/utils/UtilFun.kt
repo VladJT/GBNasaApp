@@ -48,7 +48,7 @@ fun String.toDecoratedDescription(): SpannableString {
 fun String.toDecoratedSign(): SpannableString {
     return SpannableString(this).apply {
         setSpan(
-            BackgroundColorSpan(Color.rgb(0,153,200)),
+            BackgroundColorSpan(Color.rgb(0, 153, 200)),
             0,
             length,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
