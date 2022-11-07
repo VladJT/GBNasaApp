@@ -32,7 +32,10 @@
                     android:id="@+id/settigs_pod_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:alpha="0.87"
                     android:text="Настройки для фотографии дня"
+                    android:textSize="@dimen/text_size_small"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,7 +43,9 @@
                     android:id="@+id/switch_pod_hd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:alpha="0.71"
                     android:text="Показывать фотографию дня в HD"
+                    android:textSize="@dimen/text_size_small"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/settigs_pod_label" />
 
@@ -64,7 +69,10 @@
                     android:id="@+id/settigs_mars_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:alpha="0.87"
                     android:text="Настройки для фотографий марса (дней до фото)"
+                    android:textSize="@dimen/text_size_small"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -89,10 +97,12 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_save_settings"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                style="@style/Widget.Material3.Button.IconButton.Filled"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/save"
+                android:textSize="@dimen/text_size_small"
+                app:icon="@android:drawable/ic_menu_save"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/button_exit_settings"
@@ -100,10 +110,12 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_exit_settings"
-                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cancel"
+                android:textSize="@dimen/text_size_small"
+                app:icon="@android:drawable/ic_menu_close_clear_cancel"
                 app:layout_constraintEnd_toStartOf="@+id/button_save_settings"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"

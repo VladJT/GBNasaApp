@@ -13,6 +13,7 @@ fun <T> getUniString(context: Context, text: T): String {
     return ((text as? Int)?.let { context.resources.getText(text as Int) } ?: text) as String
 }
 
+
 fun String.toDecoratedDescription(): SpannableString {
     return SpannableString(this).apply {
         for (i in this.indices) {
@@ -47,7 +48,7 @@ fun String.toDecoratedDescription(): SpannableString {
 fun String.toDecoratedSign(): SpannableString {
     return SpannableString(this).apply {
         setSpan(
-            BackgroundColorSpan(Color.rgb(0,153,200)),
+            BackgroundColorSpan(Color.rgb(0, 153, 200)),
             0,
             length,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE

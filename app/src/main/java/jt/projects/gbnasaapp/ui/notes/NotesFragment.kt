@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import jt.projects.gbnasaapp.databinding.RecyclerNotesBinding
-import jt.projects.gbnasaapp.model.notes.NotesData
 import jt.projects.gbnasaapp.ui.common.OnStartDragListener
 import jt.projects.gbnasaapp.utils.snackBar
 import jt.projects.gbnasaapp.viewmodel.notes.NotesDataStatus
@@ -59,7 +58,6 @@ class NotesFragment : Fragment() {
 
         binding.recyclerNotesDiff.setOnClickListener { viewModel.setTestData() }
     }
-
 
 
     private fun initRecyclerView() {
