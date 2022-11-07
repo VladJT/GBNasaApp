@@ -22,6 +22,7 @@ import jt.projects.gbnasaapp.utils.SETTINGS_FRAGMENT_TAG
 
 class MainActivity : AppCompatActivity() {
 
+
     private lateinit var binding: ActivityMainBinding
     private var isMainMenuOnBottomBar = true
 

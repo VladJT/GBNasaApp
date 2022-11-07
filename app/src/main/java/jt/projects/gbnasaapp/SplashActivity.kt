@@ -15,6 +15,7 @@ import jt.projects.gbnasaapp.databinding.ActivitySplashScreenBinding
 
 private const val SPLASH_DELAY = 3000L
 
+
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
 

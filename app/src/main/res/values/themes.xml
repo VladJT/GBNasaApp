@@ -6,6 +6,7 @@
         <item name="textColorDisconnected">@color/gray</item>
     </style>
 
+
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="textColorConnected">@color/purple_200</item>
         <item name="textColorDisconnected">@color/gray</item>
