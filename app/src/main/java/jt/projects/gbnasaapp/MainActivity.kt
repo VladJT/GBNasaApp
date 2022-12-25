@@ -19,16 +19,19 @@ import jt.projects.gbnasaapp.ui.notes.NotesFragment
 import jt.projects.gbnasaapp.ui.pod.PodViewPagerFragment
 import jt.projects.gbnasaapp.utils.BOTTOM_NAV_FRAGMENT_TAG
 import jt.projects.gbnasaapp.utils.SETTINGS_FRAGMENT_TAG
+import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var isMainMenuOnBottomBar = true
 
+    private val sharedPref : SharedPref by inject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        SharedPref.initSharedPreferencesContext(applicationContext)
-        setTheme(SharedPref.getData().theme)
+
+        setTheme(sharedPref.getData().theme)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setSupportActionBar(binding.toolbar)
         initToolbar()
@@ -47,7 +50,7 @@ class MainActivity : AppCompatActivity() {
             ObjectAnimator.ofFloat(binding.fabTopImageview, View.ROTATION, 0f, 360f)
                 .setDuration(500L).start()
             binding.fabTopImageview.animate().setDuration(1000L).alpha(0.1f)
-            showFragmentWithBS(SettingsFragment.newInstance(), SETTINGS_FRAGMENT_TAG)
+            showFragmentWithBS(SettingsFragment(), SETTINGS_FRAGMENT_TAG)
         }
 
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
@@ -187,9 +190,9 @@ class MainActivity : AppCompatActivity() {
                     resources.getString(R.string.theme_1) -> newTheme = R.style.AppTheme_Mars
                     resources.getString(R.string.theme_2) -> newTheme = R.style.AppTheme_Neptune
                 }
-                if (SharedPref.getData().theme != newTheme) {
-                    SharedPref.settings.theme = newTheme
-                    SharedPref.save()
+                if (sharedPref.getData().theme != newTheme) {
+                    sharedPref.settings.theme = newTheme
+                    sharedPref.save()
                     recreate()
                 }
             }

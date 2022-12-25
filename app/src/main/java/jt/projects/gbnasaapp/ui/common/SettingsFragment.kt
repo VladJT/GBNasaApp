@@ -9,16 +9,18 @@ import androidx.fragment.app.Fragment
 import jt.projects.gbnasaapp.R
 import jt.projects.gbnasaapp.databinding.FragmentSettingsBinding
 import jt.projects.gbnasaapp.model.SharedPref
+import jt.projects.gbnasaapp.ui.notes.NotesFragment
+import org.koin.android.ext.android.inject
 
 
-class SettingsFragment : Fragment() {
+class SettingsFragment() : Fragment() {
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
 
+    private val sharedPref : SharedPref by inject()
     companion object {
         fun newInstance() = SettingsFragment()
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,10 +41,10 @@ class SettingsFragment : Fragment() {
 
     private fun initSaveButton() {
         binding.buttonSaveSettings.setOnClickListener {
-            SharedPref.settings.podHD = binding.switchPodHd.isChecked
-            SharedPref.settings.marsPhotoDaysBefore =
+            sharedPref.settings.podHD = binding.switchPodHd.isChecked
+            sharedPref.settings.marsPhotoDaysBefore =
                 binding.sliderMarsPhotoDaysBefore.value.toInt()
-            SharedPref.save()
+            sharedPref.save()
             requireActivity().supportFragmentManager.popBackStack()
         }
     }
@@ -54,11 +56,11 @@ class SettingsFragment : Fragment() {
     }
 
     private fun initPodHdSwitch() {
-        binding.switchPodHd.isChecked = SharedPref.settings.podHD
+        binding.switchPodHd.isChecked = sharedPref.settings.podHD
     }
 
     private fun initMarsDaysBeforeSlider() {
-        binding.sliderMarsPhotoDaysBefore.value = SharedPref.settings.marsPhotoDaysBefore.toFloat()
+        binding.sliderMarsPhotoDaysBefore.value = sharedPref.settings.marsPhotoDaysBefore.toFloat()
     }
 
 

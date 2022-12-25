@@ -28,10 +28,13 @@ import jt.projects.gbnasaapp.utils.toDecoratedDescription
 import jt.projects.gbnasaapp.utils.toDecoratedSign
 import jt.projects.gbnasaapp.viewmodel.pod.PictureOfTheDayData
 import jt.projects.gbnasaapp.viewmodel.pod.PictureOfTheDayViewModel
+import org.koin.android.ext.android.inject
 import java.time.LocalDate
 
 
 class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
+
+    private val sharedPref : SharedPref by inject()
 
     private var _binding: PictureOfTheDayFragmentBinding? = null
     private val binding get() = _binding!!
@@ -68,7 +71,7 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
                 binding.podProgressBar.visibility = View.GONE
                 val serverResponseData = data.serverResponseData
                 var url: String? = serverResponseData.url
-                if (SharedPref.getData().podHD) {
+                if (sharedPref.getData().podHD) {
                     url = serverResponseData.hdurl
                 }
                 if (url.isNullOrEmpty()) {

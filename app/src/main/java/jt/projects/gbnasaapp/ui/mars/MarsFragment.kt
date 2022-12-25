@@ -20,10 +20,12 @@ import jt.projects.gbnasaapp.utils.showPictureInFullMode
 import jt.projects.gbnasaapp.utils.snackBar
 import jt.projects.gbnasaapp.viewmodel.mars.MarsData
 import jt.projects.gbnasaapp.viewmodel.mars.MarsViewModel
+import org.koin.android.ext.android.inject
 import java.time.LocalDate
 
 
 class MarsFragment : Fragment() {
+    private val sharedPref : SharedPref by inject()
 
     private var _binding: MarsFragmentBinding? = null
     private val binding get() = _binding!!
@@ -55,7 +57,7 @@ class MarsFragment : Fragment() {
         initRecyclerView()
         viewModel.getLiveData().observe(viewLifecycleOwner) { renderData(it) }
         val localDate: LocalDate =
-            LocalDate.now().minusDays(SharedPref.settings.marsPhotoDaysBefore.toLong())
+            LocalDate.now().minusDays(sharedPref.settings.marsPhotoDaysBefore.toLong())
         viewModel.loadMarsByDate(localDate)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
