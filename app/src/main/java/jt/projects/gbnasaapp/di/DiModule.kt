@@ -1,9 +1,7 @@
 package jt.projects.gbnasaapp.di
 
 import android.content.Context
-import jt.projects.dil.DiImpl
-import jt.projects.dil.Fabric
-import jt.projects.dil.Singleton
+import jt.projects.dil.*
 import jt.projects.gbnasaapp.App
 import jt.projects.gbnasaapp.BuildConfig
 import jt.projects.gbnasaapp.model.SharedPref
@@ -37,8 +35,8 @@ class DiModule(app: App) {
     }
 
     init {
-        DiImpl.add(IPodRepo::class, Singleton { podRepo })
-        DiImpl.add(IMarsRepo::class, Fabric { marsRepo })
-        DiImpl.add(SharedPref::class, Singleton { sharedPref })
+        DiImpl.add(singleton { podRepo })
+        DiImpl.add(fabric { marsRepo })
+        DiImpl.add(singleton{ sharedPref })
     }
 }
