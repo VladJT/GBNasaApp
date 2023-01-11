@@ -15,7 +15,7 @@ class PictureOfTheDayViewModel(
         MutableLiveData()
 ) : ViewModel() {
 
-    private val podRepo : IPodRepo by lazy { App.instance.podRepo }
+    private val podRepo by lazy { App.instance.di.get(IPodRepo::class) }
 
     fun getLiveData(): LiveData<PictureOfTheDayData> {
         return liveDataForViewToObserve

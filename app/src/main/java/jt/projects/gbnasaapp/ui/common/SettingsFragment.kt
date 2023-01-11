@@ -16,6 +16,8 @@ class SettingsFragment : Fragment() {
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
 
+    private val sharedPref: SharedPref = App.instance.di.get(SharedPref::class)
+
     companion object {
         fun newInstance() = SettingsFragment()
     }
@@ -40,10 +42,10 @@ class SettingsFragment : Fragment() {
 
     private fun initSaveButton() {
         binding.buttonSaveSettings.setOnClickListener {
-            App.instance.sharedPref.settings.podHD = binding.switchPodHd.isChecked
-            App.instance.sharedPref.settings.marsPhotoDaysBefore =
+            sharedPref.settings.podHD = binding.switchPodHd.isChecked
+            sharedPref.settings.marsPhotoDaysBefore =
                 binding.sliderMarsPhotoDaysBefore.value.toInt()
-            App.instance.sharedPref.save()
+            sharedPref.save()
             requireActivity().supportFragmentManager.popBackStack()
         }
     }
@@ -55,12 +57,12 @@ class SettingsFragment : Fragment() {
     }
 
     private fun initPodHdSwitch() {
-        binding.switchPodHd.isChecked = App.instance.sharedPref.settings.podHD
+        binding.switchPodHd.isChecked = sharedPref.settings.podHD
     }
 
     private fun initMarsDaysBeforeSlider() {
         binding.sliderMarsPhotoDaysBefore.value =
-            App.instance.sharedPref.settings.marsPhotoDaysBefore.toFloat()
+            sharedPref.settings.marsPhotoDaysBefore.toFloat()
     }
 
 

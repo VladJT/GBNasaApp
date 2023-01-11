@@ -34,6 +34,7 @@ class MarsFragment : Fragment() {
             showPictureInFullMode(data.imgSrc)
         }
     })
+    val sharedPref: SharedPref = App.instance.di.get(SharedPref::class)
 
     private val viewModel: MarsViewModel by lazy {
         ViewModelProvider.NewInstanceFactory().create(MarsViewModel::class.java)
@@ -56,7 +57,9 @@ class MarsFragment : Fragment() {
         initRecyclerView()
         viewModel.getLiveData().observe(viewLifecycleOwner) { renderData(it) }
         val localDate: LocalDate =
-            LocalDate.now().minusDays(App.instance.sharedPref.settings.marsPhotoDaysBefore.toLong())
+            LocalDate.now().minusDays(
+                sharedPref.settings.marsPhotoDaysBefore.toLong()
+            )
         viewModel.loadMarsByDate(localDate)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

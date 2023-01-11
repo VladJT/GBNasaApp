@@ -12,9 +12,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
-open class RetrofitImpl {
-    var apiKey = App.instance.apiKey
-    val baseUrl = App.instance.baseURL
+open class RetrofitImpl(val apiKey:String, val baseUrl: String) {
 
     inline fun <reified T> getRetrofitImpl(): T {
         val podRetrofit = Retrofit.Builder()

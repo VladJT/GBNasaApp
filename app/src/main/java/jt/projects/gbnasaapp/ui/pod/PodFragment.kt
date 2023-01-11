@@ -22,7 +22,9 @@ import androidx.transition.TransitionSet
 import coil.load
 import jt.projects.gbnasaapp.App
 import jt.projects.gbnasaapp.R
+import jt.projects.gbnasaapp.app
 import jt.projects.gbnasaapp.databinding.PictureOfTheDayFragmentBinding
+import jt.projects.gbnasaapp.model.SharedPref
 import jt.projects.gbnasaapp.utils.snackBar
 import jt.projects.gbnasaapp.utils.toDecoratedDescription
 import jt.projects.gbnasaapp.utils.toDecoratedSign
@@ -36,6 +38,7 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
     private var _binding: PictureOfTheDayFragmentBinding? = null
     private val binding get() = _binding!!
     private var isExpanded = true
+    val sharedPref: SharedPref = App.instance.di.get(SharedPref::class)
 
 
     //Ленивая инициализация модели
@@ -68,7 +71,7 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
                 binding.podProgressBar.visibility = View.GONE
                 val serverResponseData = data.serverResponseData
                 var url: String? = serverResponseData.url
-                if (App.instance.sharedPref.getData().podHD) {
+                if (sharedPref.getData().podHD) {
                     url = serverResponseData.hdurl
                 }
                 if (url.isNullOrEmpty()) {

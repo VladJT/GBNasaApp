@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import jt.projects.gbnasaapp.App
+import jt.projects.gbnasaapp.model.mars.IMarsRepo
+import jt.projects.gbnasaapp.model.mars.MarsRetrofitImpl
 import jt.projects.gbnasaapp.model.mars.MarsServerResponseData
 import jt.projects.gbnasaapp.model.retrofit.RetrofitCallback
 import java.time.LocalDate
@@ -13,7 +15,7 @@ class MarsViewModel(
         MutableLiveData()
 ) : ViewModel() {
 
-    private val marsRepo by lazy { App.instance.marsRepo }
+    private val marsRepo by lazy { App.instance.di.get(IMarsRepo::class) }
 
     fun getLiveData(): LiveData<MarsData> {
         return liveDataForViewToObserve
