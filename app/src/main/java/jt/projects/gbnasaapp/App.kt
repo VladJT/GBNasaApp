@@ -3,8 +3,9 @@ package jt.projects.gbnasaapp
 import android.app.Application
 import android.content.Context
 import androidx.fragment.app.Fragment
-import jt.projects.gbnasaapp.di.Di
-import jt.projects.gbnasaapp.di.DiImpl
+import jt.projects.dil.Di
+import jt.projects.dil.DiImpl
+import jt.projects.gbnasaapp.di.DiModule
 
 
 class App : Application() {
@@ -19,7 +20,9 @@ class App : Application() {
         super.onCreate()
         instance = this
         if (isMainProcess) {
-            di = DiImpl()
+            di = DiImpl().apply {
+                DiModule(this)
+            }
         }
     }
 }
