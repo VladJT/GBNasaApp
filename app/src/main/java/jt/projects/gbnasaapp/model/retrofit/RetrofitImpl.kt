@@ -1,8 +1,7 @@
 package jt.projects.gbnasaapp.model.retrofit
 
 import com.google.gson.GsonBuilder
-import jt.projects.gbnasaapp.BuildConfig
-import jt.projects.gbnasaapp.utils.NASA_BASE_URL
+import jt.projects.gbnasaapp.App
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -14,11 +13,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
 open class RetrofitImpl {
-    var apiKey = BuildConfig.NASA_API_KEY
+    var apiKey = App.instance.apiKey
+    val baseUrl = App.instance.baseURL
 
     inline fun <reified T> getRetrofitImpl(): T {
         val podRetrofit = Retrofit.Builder()
-            .baseUrl(NASA_BASE_URL)
+            .baseUrl(baseUrl)
             .addConverterFactory(
                 GsonConverterFactory.create(GsonBuilder().setLenient().create())
             )

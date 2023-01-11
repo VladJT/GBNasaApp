@@ -3,6 +3,8 @@ package jt.projects.gbnasaapp.viewmodel.pod
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import jt.projects.gbnasaapp.App
+import jt.projects.gbnasaapp.model.pod.IPodRepo
 import jt.projects.gbnasaapp.model.pod.PODRetrofitImpl
 import jt.projects.gbnasaapp.model.pod.PODServerResponseData
 import jt.projects.gbnasaapp.model.retrofit.RetrofitCallback
@@ -10,21 +12,22 @@ import java.time.LocalDate
 
 class PictureOfTheDayViewModel(
     private val liveDataForViewToObserve: MutableLiveData<PictureOfTheDayData> =
-        MutableLiveData(),
-    private val retrofitImpl: PODRetrofitImpl = PODRetrofitImpl()
+        MutableLiveData()
 ) : ViewModel() {
+
+    private val podRepo : IPodRepo by lazy { App.instance.podRepo }
 
     fun getLiveData(): LiveData<PictureOfTheDayData> {
         return liveDataForViewToObserve
     }
 
     fun loadPictureOfTheDay() {
-        retrofitImpl.getPictureOfTheDay(callback)
+        podRepo.getPictureOfTheDay(callback)
     }
 
 
     fun loadPictureOfTheDayByDate(date: LocalDate) {
-        retrofitImpl.getPictureOfTheDayByDate(callback, date)
+        podRepo.getPictureOfTheDayByDate(callback, date)
     }
 
     private val callback = object : RetrofitCallback<PODServerResponseData> {

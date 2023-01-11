@@ -4,16 +4,16 @@ import jt.projects.gbnasaapp.model.retrofit.RetrofitCallback
 import jt.projects.gbnasaapp.model.retrofit.RetrofitImpl
 import java.time.LocalDate
 
-class PODRetrofitImpl : RetrofitImpl() {
+class PODRetrofitImpl : RetrofitImpl(), IPodRepo {
     private val retrofitImpl = getRetrofitImpl<PictureOfTheDayAPI>()
 
-    fun getPictureOfTheDay(callback: RetrofitCallback<PODServerResponseData>) {
+    override fun getPictureOfTheDay(callback: RetrofitCallback<PODServerResponseData>) {
         if (isApiKeyGood(callback)) {
             retrofitImpl.getPictureOfTheDay(apiKey).enqueue(getCallbackFromRetrofit(callback))
         }
     }
 
-    fun getPictureOfTheDayByDate(
+    override fun getPictureOfTheDayByDate(
         callback: RetrofitCallback<PODServerResponseData>,
         date: LocalDate
     ) {

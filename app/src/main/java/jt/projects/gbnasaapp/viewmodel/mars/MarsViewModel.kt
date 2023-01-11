@@ -3,23 +3,24 @@ package jt.projects.gbnasaapp.viewmodel.mars
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import jt.projects.gbnasaapp.model.mars.MarsRetrofitImpl
+import jt.projects.gbnasaapp.App
 import jt.projects.gbnasaapp.model.mars.MarsServerResponseData
 import jt.projects.gbnasaapp.model.retrofit.RetrofitCallback
 import java.time.LocalDate
 
 class MarsViewModel(
     private val liveDataForViewToObserve: MutableLiveData<MarsData> =
-        MutableLiveData(),
-    private val retrofitImpl: MarsRetrofitImpl = MarsRetrofitImpl()
+        MutableLiveData()
 ) : ViewModel() {
+
+    private val marsRepo by lazy { App.instance.marsRepo }
 
     fun getLiveData(): LiveData<MarsData> {
         return liveDataForViewToObserve
     }
 
     fun loadMarsByDate(date: LocalDate) {
-        retrofitImpl.getMarsPhotosByDate(callback, date)
+        marsRepo.getMarsPhotosByDate(callback, date)
     }
 
     private val callback = object : RetrofitCallback<MarsServerResponseData> {

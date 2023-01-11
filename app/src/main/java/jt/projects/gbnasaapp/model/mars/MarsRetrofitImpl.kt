@@ -4,10 +4,10 @@ import jt.projects.gbnasaapp.model.retrofit.RetrofitCallback
 import jt.projects.gbnasaapp.model.retrofit.RetrofitImpl
 import java.time.LocalDate
 
-class MarsRetrofitImpl : RetrofitImpl() {
+class MarsRetrofitImpl : RetrofitImpl(), IMarsRepo {
     private val retrofitImpl = getRetrofitImpl<MarsAPI>()
 
-    fun getMarsPhotosByDate(callback: RetrofitCallback<MarsServerResponseData>, date: LocalDate) {
+    override fun getMarsPhotosByDate(callback: RetrofitCallback<MarsServerResponseData>, date: LocalDate) {
         if (isApiKeyGood(callback)) {
             retrofitImpl.getMarsPhotosByDate(apiKey, date.toString())
                 .enqueue(getCallbackFromRetrofit(callback))

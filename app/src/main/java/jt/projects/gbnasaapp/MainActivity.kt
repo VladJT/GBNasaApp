@@ -10,7 +10,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import jt.projects.gbnasaapp.databinding.ActivityMainBinding
-import jt.projects.gbnasaapp.model.SharedPref
 import jt.projects.gbnasaapp.ui.animation.AnimationFragment
 import jt.projects.gbnasaapp.ui.common.BottomNavigationDrawerFragment
 import jt.projects.gbnasaapp.ui.common.SettingsFragment
@@ -27,8 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        SharedPref.initSharedPreferencesContext(applicationContext)
-        setTheme(SharedPref.getData().theme)
+        setTheme(App.instance.sharedPref.getData().theme)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setSupportActionBar(binding.toolbar)
         initToolbar()
@@ -187,9 +185,9 @@ class MainActivity : AppCompatActivity() {
                     resources.getString(R.string.theme_1) -> newTheme = R.style.AppTheme_Mars
                     resources.getString(R.string.theme_2) -> newTheme = R.style.AppTheme_Neptune
                 }
-                if (SharedPref.getData().theme != newTheme) {
-                    SharedPref.settings.theme = newTheme
-                    SharedPref.save()
+                if (App.instance.sharedPref.getData().theme != newTheme) {
+                    App.instance.sharedPref.settings.theme = newTheme
+                    App.instance.sharedPref.save()
                     recreate()
                 }
             }

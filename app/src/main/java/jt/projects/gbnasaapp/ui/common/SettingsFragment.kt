@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import jt.projects.gbnasaapp.App
 import jt.projects.gbnasaapp.R
 import jt.projects.gbnasaapp.databinding.FragmentSettingsBinding
 import jt.projects.gbnasaapp.model.SharedPref
@@ -39,10 +40,10 @@ class SettingsFragment : Fragment() {
 
     private fun initSaveButton() {
         binding.buttonSaveSettings.setOnClickListener {
-            SharedPref.settings.podHD = binding.switchPodHd.isChecked
-            SharedPref.settings.marsPhotoDaysBefore =
+            App.instance.sharedPref.settings.podHD = binding.switchPodHd.isChecked
+            App.instance.sharedPref.settings.marsPhotoDaysBefore =
                 binding.sliderMarsPhotoDaysBefore.value.toInt()
-            SharedPref.save()
+            App.instance.sharedPref.save()
             requireActivity().supportFragmentManager.popBackStack()
         }
     }
@@ -54,11 +55,12 @@ class SettingsFragment : Fragment() {
     }
 
     private fun initPodHdSwitch() {
-        binding.switchPodHd.isChecked = SharedPref.settings.podHD
+        binding.switchPodHd.isChecked = App.instance.sharedPref.settings.podHD
     }
 
     private fun initMarsDaysBeforeSlider() {
-        binding.sliderMarsPhotoDaysBefore.value = SharedPref.settings.marsPhotoDaysBefore.toFloat()
+        binding.sliderMarsPhotoDaysBefore.value =
+            App.instance.sharedPref.settings.marsPhotoDaysBefore.toFloat()
     }
 
 

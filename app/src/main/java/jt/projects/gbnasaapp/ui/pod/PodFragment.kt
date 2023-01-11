@@ -20,9 +20,9 @@ import androidx.transition.Fade
 import androidx.transition.TransitionManager
 import androidx.transition.TransitionSet
 import coil.load
+import jt.projects.gbnasaapp.App
 import jt.projects.gbnasaapp.R
 import jt.projects.gbnasaapp.databinding.PictureOfTheDayFragmentBinding
-import jt.projects.gbnasaapp.model.SharedPref
 import jt.projects.gbnasaapp.utils.snackBar
 import jt.projects.gbnasaapp.utils.toDecoratedDescription
 import jt.projects.gbnasaapp.utils.toDecoratedSign
@@ -68,7 +68,7 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
                 binding.podProgressBar.visibility = View.GONE
                 val serverResponseData = data.serverResponseData
                 var url: String? = serverResponseData.url
-                if (SharedPref.getData().podHD) {
+                if (App.instance.sharedPref.getData().podHD) {
                     url = serverResponseData.hdurl
                 }
                 if (url.isNullOrEmpty()) {
