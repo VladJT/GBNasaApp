@@ -3,27 +3,12 @@ package jt.projects.gbnasaapp
 import android.app.Application
 import android.content.Context
 import androidx.fragment.app.Fragment
-import jt.projects.dil.Di
-import jt.projects.dil.DiImpl
 import jt.projects.gbnasaapp.di.DiModule
 
 
 class App : Application() {
-    companion object {
-        lateinit var instance: App
-    }
-
-    private val isMainProcess = true
-    lateinit var di: Di
-
-    override fun onCreate() {
-        super.onCreate()
-        instance = this
-        if (isMainProcess) {
-            di = DiImpl().apply {
-                DiModule(this)
-            }
-        }
+    init {
+        DiModule(this)
     }
 }
 

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import jt.projects.gbnasaapp.App
+import jt.projects.dil.inject
 import jt.projects.gbnasaapp.R
 import jt.projects.gbnasaapp.databinding.FragmentSettingsBinding
 import jt.projects.gbnasaapp.model.SharedPref
@@ -16,7 +16,7 @@ class SettingsFragment : Fragment() {
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
 
-    private val sharedPref: SharedPref = App.instance.di.get(SharedPref::class)
+    private val sharedPref: SharedPref by inject()
 
     companion object {
         fun newInstance() = SettingsFragment()

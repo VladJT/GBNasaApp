@@ -1,7 +1,6 @@
 package jt.projects.gbnasaapp.model.retrofit
 
 import com.google.gson.GsonBuilder
-import jt.projects.gbnasaapp.App
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -12,7 +11,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
-open class RetrofitImpl(val apiKey:String, val baseUrl: String) {
+open class RetrofitImpl(val apiKey: String, val baseUrl: String) {
 
     inline fun <reified T> getRetrofitImpl(): T {
         val podRetrofit = Retrofit.Builder()

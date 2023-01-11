@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import jt.projects.dil.inject
 import jt.projects.gbnasaapp.databinding.ActivityMainBinding
 import jt.projects.gbnasaapp.model.SharedPref
 import jt.projects.gbnasaapp.ui.animation.AnimationFragment
@@ -20,11 +21,12 @@ import jt.projects.gbnasaapp.ui.pod.PodViewPagerFragment
 import jt.projects.gbnasaapp.utils.BOTTOM_NAV_FRAGMENT_TAG
 import jt.projects.gbnasaapp.utils.SETTINGS_FRAGMENT_TAG
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var isMainMenuOnBottomBar = true
-    val sharedPref: SharedPref = App.instance.di.get(SharedPref::class)
+    private val sharedPref: SharedPref by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

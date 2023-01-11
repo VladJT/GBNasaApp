@@ -20,9 +20,8 @@ import androidx.transition.Fade
 import androidx.transition.TransitionManager
 import androidx.transition.TransitionSet
 import coil.load
-import jt.projects.gbnasaapp.App
+import jt.projects.dil.inject
 import jt.projects.gbnasaapp.R
-import jt.projects.gbnasaapp.app
 import jt.projects.gbnasaapp.databinding.PictureOfTheDayFragmentBinding
 import jt.projects.gbnasaapp.model.SharedPref
 import jt.projects.gbnasaapp.utils.snackBar
@@ -38,7 +37,8 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
     private var _binding: PictureOfTheDayFragmentBinding? = null
     private val binding get() = _binding!!
     private var isExpanded = true
-    val sharedPref: SharedPref = App.instance.di.get(SharedPref::class)
+
+    private val sharedPref: SharedPref by inject()
 
 
     //Ленивая инициализация модели
@@ -128,15 +128,6 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
 
 
     private fun prepareAnimationPod() {
-        //author
-//        val aTransition = ChangeBounds()
-//        TransitionManager.beginDelayedTransition(binding.photoContainer, aTransition)
-//        val constraintSet = ConstraintSet()
-//        constraintSet.clone(binding.photoContainer)
-//        constraintSet.connect(binding.podAuthorContainer.id, ConstraintSet.START, binding.imageViewPodContainer.id, ConstraintSet.START)
-//        constraintSet.connect(binding.podAuthorContainer.id, ConstraintSet.END, binding.imageViewPodContainer.id, ConstraintSet.END)
-//        constraintSet.applyTo(binding.photoContainer)
-
         val imageTransition = ChangeBounds()
         imageTransition.interpolator = AnticipateOvershootInterpolator(1.0f)
         imageTransition.duration = 1000L
@@ -195,10 +186,6 @@ class PodFragment(val localDate: LocalDate = LocalDate.now()) : Fragment() {
 
 
     private fun showImage(url: String) {
-//        val imageTransition = ChangeImageTransform()
-//        imageTransition.interpolator = AnticipateOvershootInterpolator(1.0f)
-//        imageTransition.duration = 1000L
-
         binding.imageViewPod.visibility = View.VISIBLE
         //Coil в работе: достаточно вызвать у нашего ImageView нужную extension - функцию и передать ссылку на изображение
         //а в лямбде указать дополнительные параметры (не обязательно) для отображения ошибки, процесса загрузки, анимации смены изображений

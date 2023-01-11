@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
-import jt.projects.gbnasaapp.App
+import jt.projects.dil.inject
 import jt.projects.gbnasaapp.R
 import jt.projects.gbnasaapp.databinding.MarsFragmentBinding
 import jt.projects.gbnasaapp.model.SharedPref
@@ -34,7 +34,8 @@ class MarsFragment : Fragment() {
             showPictureInFullMode(data.imgSrc)
         }
     })
-    val sharedPref: SharedPref = App.instance.di.get(SharedPref::class)
+
+    private val sharedPref: SharedPref by inject()
 
     private val viewModel: MarsViewModel by lazy {
         ViewModelProvider.NewInstanceFactory().create(MarsViewModel::class.java)

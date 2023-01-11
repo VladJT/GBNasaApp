@@ -1,21 +1,13 @@
 package jt.projects.gbnasaapp.model
 
-import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import jt.projects.gbnasaapp.App
 import jt.projects.gbnasaapp.R
 
 
-class SharedPref(dbName: String, private val dbKey: String) {
+class SharedPref(private val sharedPreferences: SharedPreferences, private val dbKey: String) {
     lateinit var settings: Settings
-
-    private val sharedPreferences: SharedPreferences =
-        App.instance.applicationContext.getSharedPreferences(
-            dbName,
-            Context.MODE_PRIVATE
-        )
 
     fun getData(): Settings {
         val jsonNotes = sharedPreferences.getString(dbKey, null)
