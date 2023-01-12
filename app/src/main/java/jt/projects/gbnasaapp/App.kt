@@ -3,12 +3,12 @@ package jt.projects.gbnasaapp
 import android.app.Application
 import android.content.Context
 import androidx.fragment.app.Fragment
-import jt.projects.gbnasaapp.di.DiModule
+import jt.projects.gbnasaapp.di.appModule
 
 
 class App : Application() {
     init {
-        DiModule(this)
+        appModule.install(this)
     }
 }
 

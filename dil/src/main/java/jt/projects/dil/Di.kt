@@ -2,12 +2,12 @@ package jt.projects.dil
 
 import kotlin.reflect.KClass
 
-interface Di {
+interface IDiHolder {
     fun <T : Any> get(clazz: KClass<T>): T
     fun <T : Any> add(clazz: KClass<T>, dependencyFabric: DependencyFabric<T>)
 }
 
-object DiImpl : Di {
+object Di : IDiHolder {
     private val dependenciesHolder = HashMap<KClass<*>, DependencyFabric<*>>()
 
     override fun <T : Any> add(clazz: KClass<T>, dependencyFabric: DependencyFabric<T>) {
@@ -23,13 +23,13 @@ object DiImpl : Di {
         if (dependencyFabric != null) {
             return dependencyFabric.get() as T
         } else {
-            throw IllegalArgumentException("⭕ Not found class")
+            throw IllegalArgumentException("Not found class")
         }
     }
 }
 
 inline fun <reified T : Any> get(): T {
-    return DiImpl.get(T::class)
+    return Di.get(T::class)
 }
 
 inline fun <reified T : Any> inject() = lazy { get<T>() }

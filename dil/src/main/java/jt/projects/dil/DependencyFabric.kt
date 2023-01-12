@@ -1,5 +1,7 @@
 package jt.projects.dil
 
+import android.app.Application
+
 abstract class DependencyFabric<T : Any>(protected val creator: () -> T) {
     abstract fun get(): Any
 }
@@ -17,8 +19,17 @@ class Fabric<T : Any>(creator: () -> T) : DependencyFabric<T>(creator) {
 }
 
 
-inline fun <reified T : Any> singleton(noinline creator: () -> T): DependencyFabric<T> =
-    Singleton<T>(creator)
+class DiModule(private val block: DiModule.() -> Unit) {
+    lateinit var app: Application
 
-inline fun <reified T : Any> fabric(noinline creator: () -> T): DependencyFabric<T> =
-    Fabric<T>(creator)
+    fun install(app: Application) {
+        block()
+        this.app = app
+    }
+
+    inline fun <reified T : Any> singleton(noinline creator: () -> T) =
+        Di.add(Singleton<T>(creator))
+
+    inline fun <reified T : Any> fabric(noinline creator: () -> T) =
+        Di.add(Fabric<T>(creator))
+}
