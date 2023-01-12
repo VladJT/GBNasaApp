@@ -17,7 +17,8 @@ val appModule = DiModule {
     val apiKey by lazy { BuildConfig.NASA_API_KEY }
     val baseURL = "https://api.nasa.gov/"
 
-    singleton<IPodRepo> { PODRetrofitImpl(apiKey, baseURL) }
+    singleton<IPodRepo>("mainPodRepo") { PODRetrofitImpl(apiKey, baseURL) }
+    singleton<IPodRepo>("secondPodRepo") { PODRetrofitImpl(apiKey, baseURL) }
     fabric<IMarsRepo> { MarsRetrofitImpl(apiKey, baseURL) }
 
     /**

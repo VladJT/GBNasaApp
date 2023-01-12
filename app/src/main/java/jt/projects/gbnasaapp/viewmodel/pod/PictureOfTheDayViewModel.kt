@@ -14,7 +14,7 @@ class PictureOfTheDayViewModel(
         MutableLiveData()
 ) : ViewModel() {
 
-    private val podRepo: IPodRepo by inject()
+    private val podRepo: IPodRepo by inject("mainPodRepo")
 
     fun getLiveData(): LiveData<PictureOfTheDayData> {
         return liveDataForViewToObserve
